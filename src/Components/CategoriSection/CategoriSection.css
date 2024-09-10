@@ -1,0 +1,179 @@
+.CategoriSection{
+    padding: 30px 10% 0;
+}
+#cardCategori{
+    width: auto;
+    margin: 2rem 1rem 1rem 1rem;
+}
+.cardCategori{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 13rem;
+    height: 8rem;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.073);
+    background-color: var(--blanco);
+    padding: 10px;
+    overflow: hidden;
+}
+.iconSection{
+    color: var(--color1);
+   
+}
+.cardCategori {
+    color: var(--color1);
+}
+.cardCategori:hover{
+    color: var(--blanco);
+}
+.cardCategori:hover {
+    background-color: var(--color1);
+}
+
+.overlayModal{
+    position: fixed;
+    top: 0;
+    
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.333); 
+    z-index: 999; 
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    place-content: center;
+  }
+  .modalModal{
+    background-color: var(--blanco);
+    width: 30rem;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 20px;
+    border: none;
+  }
+
+  .estadosCard{
+    padding: 10px;
+    background-color: var(--blanco);
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    text-align: center;
+    gap: 4px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.168);
+}
+.estadosCards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    padding: 1rem;
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+  .estadosCards::-webkit-scrollbar{
+    width: 10px;
+    height: 5px;
+ 
+    cursor: pointer;
+    background-color: transparent;
+   
+}
+ 
+.estadosCards::-webkit-scrollbar-thumb {
+    background-color: var(--color1); 
+    border-radius: 10px;
+    margin-top: 3rem;
+  }
+
+.estadosCard strong{
+    font-weight: 500;
+    color: var(--color1);
+    font-size: 15px;
+}
+.estadosCard span{
+    background-color: var(--color1);
+    color: var(--blanco);
+    font-size: 13px;
+    border-radius: 5px;
+    padding: 2px 10px;
+    width: auto;
+   
+}
+.estadosCard:hover{
+    background-color: var(--color1);
+}
+.estadosCard:hover strong{
+    color: var(--blanco)!important;
+}
+.estadosCard:hover span{
+    color: var(--color1)!important;
+    background-color: var(--blanco);
+}
+
+  
+
+  .deFlexHeadModal{
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 20px ;
+    background-color: var(--color1);
+  }
+  .deFlexHeadModal h2{
+    color: var(--blanco);
+    font-weight: 500;
+    font-size: 18px;
+  }
+
+  .closeBack{
+    background-color: transparent;
+    border: none;
+    color: var(--blanco);
+    font-size: 20px;
+  }
+@media (max-width: 700px){
+    .CategoriSection{
+        padding: 30px 0% 20px;
+    }
+    #cardCategori{
+        margin: 1rem 0rem 1rem 1rem;
+    }
+    .cardCategori{
+        width: 13rem;
+        height: 6rem;
+    }
+
+    .modalModal{
+        width: 90%;
+        height: 80vh;
+      }
+
+      .estadosCard strong{
+        font-size: 12px;
+    }
+    .estadosCard span{
+        background-color: var(--color1);
+        color: var(--blanco);
+        font-size: 10px;
+        border-radius: 5px;
+        padding: 2px 10px;
+        width: auto;
+       
+    }
+    .estadosCards{
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .estadosCard{
+        padding: 7px;
+     
+    }
+}

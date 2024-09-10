@@ -1,0 +1,376 @@
+.ProductsContain{
+    padding: 20px 10%;
+    width: 100%;
+    min-height: 60vh;
+}
+.Products{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 100%;
+    padding-top: 2rem;
+}
+.categoriaProductos{
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+}
+
+.cardProdcutSelected{
+    display: flex;
+    width: 30rem;
+    height: 13rem;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.073);
+    background-color: var(--blanco);
+    padding: 10px;
+    overflow: hidden;
+   
+}
+.cardProdcutmasVendido{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width: 20rem;
+    height: 25rem;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.073);
+    background-color: var(--blanco);
+    position: relative;
+    padding: 10px;
+}
+.recomendado{
+    position: absolute;
+    background-color: var(--color1);
+    padding: 7px;
+    color: var(--blanco);
+    border-radius: 7px;
+}
+.iconCard{
+    position: absolute;
+    top: 18%;
+    left: 92%;
+    background-color: var(--color1);
+    color: var(--blanco);
+    padding: 3px;
+    border-radius: 3px;
+    font-size: 12px;
+    
+}
+.cardProdcutmasVendido  img{
+    width: 100%;
+    height: 16rem;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.cardProdcut  img{
+    width: 8rem;
+    height: 8rem;
+    object-fit: cover;
+}
+.cardProdcutSelected  img{
+    width: 11rem;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+.cardText{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: space-between;
+}
+.cardText h4{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 25ch;
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--text-color2);
+}
+.cardText h5{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 40ch;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--color1);
+}
+.cardText span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 40ch;
+    font-weight: 400;
+    height: 2.3rem;
+    font-size: 14px;
+    color: var(--text-color2);
+    font-family: 'Segoe UI', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Apple Color Emoji', 'Arial', sans-serif;
+}
+
+
+
+.cardTextSelected{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.cardTextSelected h4{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 20ch;
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--text-color2);
+}
+.cardTextSelected h5{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 30ch;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--color1);
+}
+.cardTextSelected span{
+ 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 40ch;
+    font-weight: 400;
+    font-size: 14px;
+    color: var(--text-color2);
+    font-family: 'Segoe UI', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Apple Color Emoji', 'Arial', sans-serif;
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    padding: 0px 10%;
+    background-color: var(--blanco);
+  }
+  .categoriasInputs{
+    display: flex;
+    align-items: center;
+    overflow-x: scroll;
+    padding-top: 1rem;
+    gap: 2rem;
+    padding-bottom: 10px;
+  }
+  .categoriasInputs::-webkit-scrollbar{
+ 
+    background-color: transparent;
+    width: 5px;
+    height: 5px;
+}
+ 
+.categoriasInputs::-webkit-scrollbar-thumb {
+    background-color: var(--color1);
+    width: 5px;
+    height: 5px;
+    border-radius: 10px;
+}
+  .categoriasInputs input{
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    padding: 10px 20px 5px;
+    font-size: 18px;
+    color: var(--text-color2);
+    border-radius: 20px;
+   
+    
+}
+
+  #swiper_container_products{
+  
+    width: 100%;
+  
+  }
+  #SwiperSlide-scroll-products{
+    width: auto;
+    margin: 1rem 1rem 2rem 1rem;
+  
+  }
+  #SwiperSlide-scroll-products-masvendidos{
+    width: auto;
+    margin: 1rem 1rem 2rem 1rem;
+  }
+  .categoriSection{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+   
+  
+}
+
+
+
+
+.deFlexTitlesection{
+    display: flex;
+    justify-content: space-between;
+   
+    margin:  0 1%;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--gris2);
+    
+}
+.deFlexTitlesection h3{
+    font-weight: 500;
+    font-size: 25px;
+   color: var(--text-color2);
+  
+}
+
+.deFlexTitlesection button{
+    background-color: transparent;
+    border: none;
+    color: var(--color1);
+}
+.categoriSectionSelected{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.cardProdcutmasVendido:hover{
+    background-color: var(--color1);
+}
+.cardProdcutmasVendido:hover h4{
+  color: var(--blanco)!important;
+}
+.cardProdcutmasVendido:hover h5{
+    color: var(--blanco)!important;
+}
+  .cardProdcutmasVendido:hover span{
+    color: var(--blanco)!important;
+}
+
+.cardProdcutSelected:hover{
+    background-color: var(--color1);
+}
+.cardProdcutSelected:hover h4{
+  color: var(--blanco)!important;
+}
+.cardProdcutSelected:hover h5{
+    color: var(--blanco)!important;
+}
+  .cardProdcutSelected:hover span{
+    color: var(--blanco)!important;
+}
+@media (max-width: 700px){
+    .iconCard{
+        top: 65%;
+        left: 90%;
+        font-size: 9px;
+    }
+   
+    .ProductsContain{
+        padding: 0px 0;
+    }
+    .cardProdcutSelected{
+        display: flex;
+        width: 100%;
+        height: 9rem;
+        padding: 6px;
+       
+    }
+    #SwiperSlide-scroll-products .cardProdcutSelected{
+        width: 21rem;
+    }
+    
+    .cardProdcutmasVendido{
+        width: 15rem;
+        height: 19rem;
+    }
+    .cardProdcutmasVendido  img{
+        width: 100%;
+        height: 10rem;
+    }
+    .cardProdcutSelected  img{
+        width: 8rem;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+   .categoriSectionSelected{
+        padding:  10px 3%;
+        place-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .categoriasInputs::-webkit-scrollbar-thumb {
+      background-color: transparent;
+    }
+    .categoriasInputs{
+        padding: 0 4%;
+    }
+   
+  
+    .cardProdcutmasVendido h4{
+        max-width: 20ch;
+        font-size: 16px;
+    }
+    .cardProdcutmasVendido h5{
+        max-width: 28ch;
+        font-size: 13px;
+    }
+    .cardProdcutmasVendido span{
+     
+        font-size: 13px;
+    }
+    .cardTextSelected h4{
+        max-width: 20ch;
+        font-size: 16px;
+    }
+    .cardTextSelected h5{
+        max-width: 23ch;
+        font-size: 13px;
+    }
+    .cardTextSelected span{
+        max-width: 24ch;
+        font-size: 13px;
+    }
+   
+    #SwiperSlide-scroll-products{
+        width: auto;
+        margin: 1rem 1rem 1rem 1rem;
+      
+      }
+      #SwiperSlide-scroll-products-masvendidos{
+        width: auto;
+        margin: 0rem 0rem 1rem 1rem;
+      }
+      .fixed {
+       
+        padding: 5px 4%;
+      }
+      .categoriasInputs{
+        gap: 1rem;
+        margin: 0;
+      }
+      .deFlexTitlesection{
+        margin: 0 5%;
+        
+    }
+    .Products{
+        gap: 1rem;
+        padding-top: 1rem;
+    }
+    .deFlexTitlesection h3{
+        font-size: 17px;
+    }
+   
+}

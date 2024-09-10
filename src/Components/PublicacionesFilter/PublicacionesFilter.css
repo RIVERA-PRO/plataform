@@ -1,0 +1,114 @@
+.PublicacionesFilter{
+    min-height: 100vh;
+    background-color: var(--blanco);
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.073);
+}
+.noResultText{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.cardPublic{
+    display: flex;
+    width: 40rem;
+    height: 12rem;
+    border-radius: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.073);
+    background-color: var(--blanco);
+    padding: 10px;
+    overflow: hidden;
+    gap: 10px;
+}
+
+.cardPublic img{
+    width: 10rem;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.cardGrap{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.cardPublic .cardText h4{
+    max-width: 38ch;
+}
+.cardPublic .cardText h5{
+    max-width: 50ch;
+    font-weight: 500;
+    font-size: 15px;
+}
+.cardPublic .cardText span {
+    max-width: 50ch;
+   
+}
+.cardPublic:hover{
+    background-color: var(--color1);
+}
+.cardPublic:hover h4{
+  color: var(--blanco)!important;
+}
+.cardPublic:hover h5{
+    color: var(--blanco)!important;
+}
+  .cardPublic:hover span{
+    color: var(--blanco)!important;
+}
+
+.linksSection{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    font-size: 17px;
+    color: var(--text-color2);
+    padding: 2rem 0;
+}
+.linksSection a{
+
+    color: var(--text-color2);
+}
+@media (max-width: 700px){
+    .PublicacionesFilter{
+        
+        padding: 10px 3%;
+    }
+    
+    .cardPublic{
+        width: 100%;
+        height: 9rem;
+    }
+    
+.cardPublic img{
+    width: 8rem;
+}
+.cardPublic .cardText h4{
+    max-width: 18ch;
+    font-size: 17px;
+}
+.cardPublic .cardText h5{
+    max-width: 22ch;
+    font-size: 13px;
+}
+.cardTextSelected span{
+    max-width: 24ch;
+    font-size: 13px;
+}
+
+.linksSection{
+   overflow-x: scroll;
+   width: 100%;
+   
+}
+.linksSection a{
+   font-size: 13px;
+    
+ }
+}

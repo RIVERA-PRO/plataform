@@ -1,0 +1,44 @@
+
+.bgPageSection{
+    background-image: url(../../images/mamisbg.png);
+    height: 50vh;
+    margin: 10px 10%;
+    background-repeat: no-repeat;
+    border-radius: 0 0 10px 10px;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2%;
+   
+}
+
+.bgHeader {
+    display: none;
+}
+@media (max-width: 700px){
+   
+    .bgPageSection{
+      
+        height: 40vh;
+        margin: 0;
+        padding: 0;
+        background-attachment: local;
+
+    }
+    .bgHeader{
+        position: fixed;
+        background-color: var(--color1);
+        width: 100%;
+        z-index: 20000000000000;
+        top: 0;
+        padding: 2%;
+        display: flex;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.33);
+    }
+    .bgHeader .back{
+        background-color: var(--color1);
+        color: var(--blanco);
+    }
+}
