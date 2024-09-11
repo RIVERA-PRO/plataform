@@ -104,7 +104,7 @@
     text-overflow: ellipsis;
     max-width: 40ch;
     font-weight: 400;
-    height: 2.3rem;
+   
     font-size: 14px;
     color: var(--text-color2);
     font-family: 'Segoe UI', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', 'Apple Color Emoji', 'Arial', sans-serif;

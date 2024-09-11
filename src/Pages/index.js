@@ -7,11 +7,11 @@ import Banners from "./Banners/Banners";
 import Main from "./Main/Main";
 import Contacto from "./Contacto/Contacto";
 import PageDetail from '../Pages/PageDetail/PageDetail';
-import PublicacionDetail from '../Pages/PublicacionDetail/PublicacionDetail';
-import PagePublicaciones from "./PagePublicaciones/PagePublicaciones";
 import Publicaciones from "./Publicaciones/Publicaciones";
 import Categorias from "./Categorias/Categorias";
 import PublicacionesFilterPage from "./PublicacionesFilterPage/PublicacionesFilterPage";
+import PagesInfo from "./PagesInfo/PagesInfo";
+import link from "../Components/link";
 export const router = createBrowserRouter([
 
     {
@@ -24,23 +24,20 @@ export const router = createBrowserRouter([
         element: <PagesLayaut />,
         children: [
             {
-                path: `/mamisvip/:idPublicacion/:publicacion`,
+                path: `/${link}/:categoria/:estado/:idPublicacion/:publicacion`,
                 element: <PageDetail />,
             },
             {
-                path: `/mamisvip/:categoria/:idCategoria/:estado`,
+                path: `/${link}/:categoria/:idCategoria/:estado`,
                 element: <PublicacionesFilterPage />,
             },
 
 
             {
-                path: `/blog`,
-                element: <PagePublicaciones />,
+                path: `/${link}/:info`,
+                element: <PagesInfo />,
             },
-            {
-                path: `/blog/:idPublicacion/:publicacion`,
-                element: <PublicacionDetail />,
-            },
+
 
         ]
     },

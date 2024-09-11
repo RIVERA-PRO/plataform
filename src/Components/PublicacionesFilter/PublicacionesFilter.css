@@ -12,10 +12,12 @@
     height: 100%;
     display: flex;
     justify-content: center;
+    padding-top: 5rem;
+    text-align: center;
 }
 .cardPublic{
     display: flex;
-    width: 40rem;
+    max-width: 100vh;
     height: 12rem;
     border-radius: 20px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.073);
@@ -39,7 +41,11 @@
 }
 
 .cardPublic .cardText h4{
-    max-width: 38ch;
+  
+    white-space:initial;
+    overflow:hidden;
+    text-overflow:initial;
+    max-width: 100ch;
 }
 .cardPublic .cardText h5{
     max-width: 50ch;
@@ -75,10 +81,34 @@
 
     color: var(--text-color2);
 }
+
+.cardGrapLoading{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--blanco);
+    padding: 20px;
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.073);
+    gap: 1rem;
+    width: 100%;
+
+}
+.cardPublicLoading{
+    width: 100%;
+    height: 8rem;
+    margin-right: 2rem;
+    border-radius: 20px;
+     background: linear-gradient(90deg, #e8e6e6, #fff, #fff);
+     background-size: 400% 400%;
+     animation: gradientMove 1s linear infinite;
+}
 @media (max-width: 700px){
     .PublicacionesFilter{
         
         padding: 10px 3%;
+       
     }
     
     .cardPublic{
@@ -89,16 +119,22 @@
 .cardPublic img{
     width: 8rem;
 }
+
 .cardPublic .cardText h4{
+  
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     max-width: 18ch;
     font-size: 17px;
+    color: var(--text-color2);
 }
 .cardPublic .cardText h5{
     max-width: 22ch;
     font-size: 13px;
 }
-.cardTextSelected span{
-    max-width: 24ch;
+.cardPublic .cardText span{
+    max-width: 20ch;
     font-size: 13px;
 }
 

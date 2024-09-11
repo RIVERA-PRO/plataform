@@ -2,7 +2,7 @@
 .bgPageSection{
     background-image: url(../../images/mamisbg.png);
     height: 50vh;
-    margin: 10px 10%;
+    margin: 0px 10%;
     background-repeat: no-repeat;
     border-radius: 0 0 10px 10px;
     background-size: cover;
@@ -17,7 +17,7 @@
 .bgHeader {
     display: none;
 }
-@media (max-width: 700px){
+@media (max-width: 1000px){
    
     .bgPageSection{
       
@@ -35,10 +35,17 @@
         top: 0;
         padding: 2%;
         display: flex;
+        justify-content: space-between;
+        align-items: center;
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.33);
     }
     .bgHeader .back{
         background-color: var(--color1);
         color: var(--blanco);
+    }
+    .bgHeader h5{
+        color: var(--blanco);
+        font-weight: 500;
+        text-transform: capitalize;
     }
 }

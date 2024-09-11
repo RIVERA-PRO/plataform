@@ -26,7 +26,7 @@ export default function CategoriSection() {
     }, []);
 
     const cargarPublicaciones = () => {
-        fetch(`${baseURL}/publicacionesGet.php`, {
+        fetch(`${baseURL}/publicacionesFront.php`, {
             method: 'GET',
         })
             .then(response => response.json())
@@ -73,7 +73,34 @@ export default function CategoriSection() {
     return (
         <div className='CategoriSection'>
             {loading ? (
-                <></>
+                <Swiper
+                    effect={'coverflow'}
+                    grabCursor={true}
+                    slidesPerView={'auto'}
+                    id='swiper_container_categori'
+                    autoplay={{ delay: 3000 }}
+                >
+
+                    <SwiperSlide id='cardCategoriLoading'>
+
+                    </SwiperSlide>
+                    <SwiperSlide id='cardCategoriLoading'>
+
+                    </SwiperSlide>  <SwiperSlide id='cardCategoriLoading'>
+
+                    </SwiperSlide>
+                    <SwiperSlide id='cardCategoriLoading'>
+
+                    </SwiperSlide>  <SwiperSlide id='cardCategoriLoading'>
+
+                    </SwiperSlide>  <SwiperSlide id='cardCategoriLoading'>
+
+                    </SwiperSlide>  <SwiperSlide id='cardCategoriLoading'>
+
+                    </SwiperSlide>
+
+
+                </Swiper>
             ) : (
                 <div>
                     {categorias?.length > 0 ? (

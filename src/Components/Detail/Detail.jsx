@@ -2,22 +2,19 @@ import React, { useEffect, useState, useRef } from "react";
 import { useParams } from "react-router-dom";
 import './Detail.css'
 import Modal from 'react-responsive-modal';
-import Modal2 from 'react-modal';
 import 'react-responsive-modal/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faMapMarkerAlt, faExternalLinkAlt, faStar, faTrash, faHeart } from '@fortawesome/free-solid-svg-icons';
-import whatsappIcon from '../../images/wpp.png';
 import { Link as Anchor, useNavigate, useLocation } from "react-router-dom";
 import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import baseURL from '../url';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import DetailLoading from "../DetailLoading/DetailLoading";
 import alt from '../alt';
 import link from '../link';
-import logo from '../../images/logo.png';
 import { useMediaQuery } from '@react-hook/media-query';
 export default function Detail() {
     const navigate = useNavigate();
@@ -51,7 +48,6 @@ export default function Detail() {
             .then(response => response.json())
             .then(data => {
                 setCategorias(data.categorias || []);
-                console.log(data.categorias)
             })
             .catch(error => console.error('Error al cargar contactos:', error));
     };
@@ -77,14 +73,13 @@ export default function Detail() {
 
 
     const cargarPublicaciones = () => {
-        fetch(`${baseURL}/publicacionesGet.php`, {
+        fetch(`${baseURL}/publicacionesFront.php`, {
             method: 'GET',
         })
             .then(response => response.json())
             .then(data => {
                 const mezclados = mezclarArray(data.publicaciones || []);
                 setPublicaciones(mezclados);
-                console.log(mezclados);
                 setLoading(false);
             })
             .catch(error => {
@@ -177,10 +172,21 @@ export default function Detail() {
     const handleWhatsappClick = () => {
         const phoneNumber = publicacion.telefono;
         const currentUrl = window.location.href; // Obtiene la URL actual
-        const message = `Hola 🤝, he visto tu anuncio \n\n✅${publicacion.titulo} en:\n     *${alt}*: \n\n✅ ${currentUrl} \n\n y quisiera saber más información... 😊 gracias! `;
+
+        // Función para eliminar acentos
+        const removeAccents = (str) => {
+            const accents = /[\u0300-\u036f]/g;
+            return str.normalize("NFD").replace(accents, "");
+        };
+
+        const tituloSinAcentos = removeAccents(publicacion.titulo);
+
+        const message = `Hola 🤝, he visto tu anuncio \n\n✅${tituloSinAcentos} en:\n     *${alt}*: \n\n✅ ${currentUrl} \n\n y quisiera saber más información... 😊 gracias! `;
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
     };
+
+
 
 
     const handleCallClick = () => {
@@ -190,7 +196,10 @@ export default function Detail() {
 
     };
 
-
+    const removeAccents = (str) => {
+        const accents = /[\u0300-\u036f]/g;
+        return str.normalize("NFD").replace(accents, "");
+    };
     if (!publicacion) {
         return <DetailLoading />;
     }
@@ -381,14 +390,14 @@ export default function Detail() {
             >
                 {publicaciones?.slice(0, 10)?.map(item => (
                     <SwiperSlide key={item.idPublicacion} id='SwiperSlide-scroll-products-masvendidos'>
-                        <a class='cardProdcutmasVendido' href={`/${link}/${item.idPublicacion}/${item.titulo.replace(/\s+/g, '-')}`}>
+                        <a class='cardProdcutmasVendido' href={`/${link}/${removeAccents(categorias.find(cat => cat.idCategoria === item.idCategoria)?.categoria?.replace(/\s+/g, '-') || '')}/${removeAccents(item.estado.replace(/\s+/g, '-'))}/${item.idPublicacion}/${removeAccents(item.titulo.replace(/\s+/g, '-'))}`}>
                             <img src={obtenerImagen(item)} alt={`${item?.titulo} - ${alt}`} />
                             <h6 className='recomendado'>Recomendado</h6>
                             <div className='cardText'>
                                 <h4>{item.titulo}</h4>
                                 {isScreenLarge ?
                                     <>
-                                        <span>{item.descripcion.slice(0, 90)}</span>
+                                        <span>{item.descripcion.slice(0, 80)}</span>
                                     </> :
                                     <>
                                         <span>{item.descripcion.slice(0, 60)}</span>

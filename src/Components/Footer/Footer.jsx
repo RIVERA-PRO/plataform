@@ -4,6 +4,8 @@ import { Link as Anchor } from 'react-router-dom';
 import contact from '../contact'
 import logo from '../../images/logo.png'
 import baseURL from '../url';
+import links from '../../Components/links';
+import link from '../../Components/link';
 export default function Footer() {
     const [contactos, setContactos] = useState([]);
     useEffect(() => {
@@ -59,6 +61,16 @@ export default function Footer() {
                     <h3>Enlaces</h3>
 
                     <Anchor to={`/dashboard`} >Acceso</Anchor>
+                    {
+                        links.map(item => (
+                            <Anchor
+                                key={item}
+                                to={`/${link}/${item}`}
+                            >
+                                {item?.replace(/-/g, ' ')}
+                            </Anchor>
+                        ))
+                    }
                 </div>
             </div>
             <p className='COPYRIGHT'>© COPYRIGHT 2024 </p>

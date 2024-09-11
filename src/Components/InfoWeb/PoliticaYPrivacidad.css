@@ -1,0 +1,51 @@
+.InfoContain{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.InfoContain ul{
+    padding: 2rem;
+    color: var(--text-color2);
+}
+.InfoContain ol{
+    padding: 1rem;
+    color: var(--text-color2);
+    font-weight: 600;
+}
+
+.InfoContain strong{
+    color: var(--color1);
+    font-weight: 500;
+}
+.InfoContain h3{
+    color: var(--color1);
+    font-weight: 500;
+    font-size: 25px;
+}
+.InfoContain h4{
+    color: var(--color1);
+    font-weight: 500;
+    font-size: 18px;
+}
+.InfoContain h1{
+    color: var(--color1);
+    font-weight: 500;
+    font-size: 30px;
+    text-transform: capitalize;
+}
+.InfoContain hr{
+    margin: 1rem;
+}
+.InfoContain p{
+    color: var(--text-color2);
+}
+.sectionInfo{
+    background-color: var(--gris);
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+ 
+}

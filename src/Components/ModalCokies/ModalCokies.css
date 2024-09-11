@@ -1,0 +1,61 @@
+.modal-dev-cokies{
+    top: 0;
+    background-color: var(--gris);
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0 ;
+    padding: 30px;
+}
+.overlay-dev-cokies{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.427); 
+    z-index: 999; 
+    display: flex;
+    justify-content:end;
+    align-items: end;
+    z-index: 10000000;
+}
+
+.modal-dev-contain-cokies{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.modal-dev-contain-cokies img{
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.073);
+}
+.modal-dev-contain-cokies h1{
+    color: var(--color1);
+    padding-top: 10px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 28px;
+}
+.modal-dev-contain-cokies h4{
+    color: var(--text-color2);
+   
+}
+.modal-dev-contain-cokies a{
+    color: var(--text-color2);
+    text-transform: capitalize;
+}
+.accept-button{
+    background-color: var(--color1);
+    padding: 10px 20px;
+    color: var(--blanco);
+    border-radius: 6px;
+    border: none;
+}

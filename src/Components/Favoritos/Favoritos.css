@@ -69,14 +69,14 @@
   }
 .cardProductCart{
     display: flex;
-    gap: 10px;
+    gap: 1rem;
     margin-bottom: 1rem;
     position: relative;
     align-items: center;
     border-radius: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid var(--gris2);
-    justify-content: space-around;
+  
 }
 .deleteToCart{
     background-color: var(--color1);
@@ -126,10 +126,10 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 25ch;
+    max-width: 30ch;
     font-weight: 500;
-    font-size: 16px;
-    color: var(--text-color2);
+    font-size: 13px;
+    color: var(--color1);
 }
 .deFLex{
     display: flex;
@@ -295,6 +295,7 @@
     background-color: transparent;
     border: none;
     font-size: 17px;
+    margin-left: 2rem;
    
 }
 .FavoriteIcon{

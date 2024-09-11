@@ -8,8 +8,8 @@
     gap: 2rem;
 }
 .cardLoading{
-    width: 13rem;
-    height: 14rem;
+    width: 20rem;
+    height: 25rem;
     margin-right: 2rem;
     margin-bottom: 2rem;
     border-radius: 20px;
@@ -25,8 +25,8 @@
     margin-bottom: 2rem;
 }
 .cardLoading2{
-    width: 23rem;
-    height: 8rem;
+    width: 30rem;
+    height: 13rem;
     margin-right: 2rem;
     border-radius: 20px;
      background: linear-gradient(90deg, #e8e6e6, #fff, #fff);
@@ -37,8 +37,8 @@
 
   @media (max-width: 700px){
     .cardLoading{
-        width: 10rem;
-        height: 12rem;
+        width: 15rem;
+        height: 19rem;
         margin-right: 1rem;
     }
     .cardsLoading{
@@ -48,8 +48,8 @@
         padding-left: 3%;
     }
     .cardLoading2{
-        width: 19rem;
-        height: 6rem;
+        width: 20rem;
+        height: 9rem;
         margin-right: 1rem;
     }
     

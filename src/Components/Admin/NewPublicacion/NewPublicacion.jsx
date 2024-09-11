@@ -251,7 +251,7 @@ export default function NewPublicacion() {
                                 </fieldset>
 
                                 <fieldset id='descripcion'>
-                                    <legend>Descripción</legend>
+                                    <legend>Descripción (obligatorio)</legend>
                                     <textarea
                                         id="descripcion"
                                         name="descripcion"

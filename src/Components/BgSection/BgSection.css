@@ -1,0 +1,17 @@
+.BgSection{
+    background-image: url(../../images/mamisbg.png);
+    height: 20rem;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0 10%;
+    border-radius: 10px;
+   
+}
+
+@media (max-width: 900px) {
+    .BgSection{
+        margin: 0 4%;
+        height: 10rem;
+       
+    }
+}

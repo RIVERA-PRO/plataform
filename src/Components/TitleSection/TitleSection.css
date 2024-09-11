@@ -7,6 +7,8 @@
     background-color: var(--blanco);
     padding: 30px 10%;
     text-align: center;
+    margin: 4rem 0 4rem 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.073);
 }
 .titleSectionText img{
     width: 70px;
@@ -25,7 +27,7 @@
 .titleSectionText span{
     color: var(--text-color2);
     font-weight: 400;
-   
+    width: 70%;
 }
 
 .titleSectionText a{
@@ -48,4 +50,9 @@
     .titleSectionText{
         padding: 30px 6%;
     }
+    .titleSectionText span{
+      
+        width: 100%;
+    }
+
 }

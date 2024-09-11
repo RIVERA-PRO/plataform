@@ -5,7 +5,36 @@
     justify-content: space-between;
 }
 
-@media (max-width: 700px){
+.linksPages{
+    display: flex;
+    gap: 1rem;
+
+    padding: 10px;
+}
+.linksPages a{
+    background-color: var(--gris);
+    border-radius: 10px;
+    padding: 10px;
+    color: var(--color1);
+    font-weight: 500;
+    text-transform: capitalize;
+    width: 100%;
+    text-align: center;
+}
+.activeAnchor{
+    background-color: var(--color1)!important;
+    color: var(--blanco)!important;
+}
+
+@media (max-width: 1000px){
+    .linksPages{
+       padding: 0;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    .linksPages a{
+       font-size: 13px;
+    }
     .sectionGrid{
        flex-direction: column;
        padding: 10px 0%;

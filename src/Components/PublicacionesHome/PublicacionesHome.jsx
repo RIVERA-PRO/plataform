@@ -26,6 +26,13 @@ export default function PublicacionesHome() {
     const [publicaciones, setPublicacions] = useState([]);
     const [categoriaSeleccionada, setCategoriaSeleccionada] = useState('Todo');
     const isScreenLarge = useMediaQuery('(min-width: 900px)');
+
+    // Función para eliminar acentos
+    const removeAccents = (str) => {
+        const accents = /[\u0300-\u036f]/g;
+        return str.normalize("NFD").replace(accents, "");
+    };
+
     const handleClickCategoria = (categoria) => {
         setCategoriaSeleccionada(categoria);
     };
@@ -50,9 +57,8 @@ export default function PublicacionesHome() {
         }
     };
 
-
     const cargarPublicaciones = () => {
-        fetch(`${baseURL}/publicacionesGet.php`, {
+        fetch(`${baseURL}/publicacionesFront.php`, {
             method: 'GET',
         })
             .then(response => response.json())
@@ -122,7 +128,6 @@ export default function PublicacionesHome() {
                 </div>
             )}
 
-
             {loading ? (
                 <ProductosLoading />
             ) : (
@@ -140,18 +145,16 @@ export default function PublicacionesHome() {
                                     >
                                         {publicaciones?.filter(item => item.recomendado === "si").map(item => (
                                             <SwiperSlide key={item.idPublicacion} id='SwiperSlide-scroll-products-masvendidos'>
-                                                <Anchor className='cardProdcutmasVendido' to={`/${link}/${item.idPublicacion}/${item.titulo.replace(/\s+/g, '-')}`}>
+                                                <Anchor className='cardProdcutmasVendido' to={`/${link}/${removeAccents(categorias.find(cat => cat.idCategoria === item.idCategoria)?.categoria || '').replace(/\s+/g, '-')}/${removeAccents(item?.estado || '').replace(/\s+/g, '-')}/${item.idPublicacion}/${removeAccents(item.titulo || '').replace(/\s+/g, '-')}`}>
                                                     <img src={obtenerImagen(item)} alt={`${item?.titulo} - ${alt}`} />
                                                     <h6 className='recomendado'>Recomendado</h6>
                                                     <div className='cardText'>
                                                         <h4>{item.titulo}</h4>
-                                                        {isScreenLarge ?
-                                                            <>
-                                                                <span>{item.descripcion.slice(0, 90)}</span>
-                                                            </> :
-                                                            <>
-                                                                <span>{item.descripcion.slice(0, 60)}</span>
-                                                            </>}
+                                                        {isScreenLarge ? (
+                                                            <span>{item.descripcion.slice(0, 80)}</span>
+                                                        ) : (
+                                                            <span>{item.descripcion.slice(0, 60)}</span>
+                                                        )}
                                                         <h5> <FontAwesomeIcon icon={faMapMarkerAlt} /> {item.estado} -  {item.municipio}</h5>
                                                     </div>
                                                 </Anchor>
@@ -164,7 +167,7 @@ export default function PublicacionesHome() {
                             {categoriasConProductos?.map(({ categoria, idCategoria }) => (
                                 <div key={idCategoria} className='categoriSection' ref={ref => categoriasRefs.current[categorias.findIndex(cat => cat.idCategoria === idCategoria)] = ref}>
                                     <div className='deFlexTitlesection'>
-                                        <h3>   <FontAwesomeIcon icon={faStar} /> {categoria}</h3>
+                                        <h3> <FontAwesomeIcon icon={faStar} /> {categoria}</h3>
                                         <hr />
                                         <button onClick={() => handleClickCategoria(idCategoria)}>
                                             Ver más
@@ -177,33 +180,25 @@ export default function PublicacionesHome() {
                                         slidesPerView={'auto'}
                                         id='swiper_container_products'
                                     >
-
-
                                         {publicaciones?.filter(item => item.idCategoria === idCategoria).map(item => (
                                             <SwiperSlide id='SwiperSlide-scroll-products' key={item.idPublicacion}>
-                                                <Anchor className='cardProdcutSelected' key={item.idPublicacion} to={`/${link}/${item.idPublicacion}/${item.titulo.replace(/\s+/g, '-')}`}>
-
+                                                <Anchor className='cardProdcutSelected' key={item.idPublicacion} to={`/${link}/${removeAccents(categoria || '').replace(/\s+/g, '-')}/${removeAccents(item?.estado || '').replace(/\s+/g, '-')}/${item.idPublicacion}/${removeAccents(item.titulo || '').replace(/\s+/g, '-')}`}>
                                                     <img src={obtenerImagen(item)} alt={`${item?.titulo} - ${alt}`} />
                                                     <div className='cardTextSelected'>
                                                         <h4>{item.titulo}</h4>
-                                                        {isScreenLarge ?
-                                                            <>
-                                                                <span>{item.descripcion.slice(0, 120)}</span>
-                                                            </> :
-                                                            <>
-                                                                <span>{item.descripcion.slice(0, 60)}</span>
-                                                            </>}
+                                                        {isScreenLarge ? (
+                                                            <span>{item.descripcion.slice(0, 120)}</span>
+                                                        ) : (
+                                                            <span>{item.descripcion.slice(0, 60)}</span>
+                                                        )}
                                                         <h5> <FontAwesomeIcon icon={faMapMarkerAlt} /> {item.estado} -  {item.municipio}</h5>
                                                         <FontAwesomeIcon icon={faAngleDoubleRight} className='iconCard' />
                                                     </div>
-
                                                 </Anchor>
                                             </SwiperSlide>
                                         ))}
-
                                     </Swiper>
                                 </div>
-
                             ))}
                         </>
                     )}
@@ -212,21 +207,17 @@ export default function PublicacionesHome() {
                         {publicaciones
                             ?.filter(item => categoriaSeleccionada !== 'Todo' && item.idCategoria === categoriaSeleccionada)
                             ?.map(item => (
-                                <Anchor key={item.idPublicacion} to={`/${link}/${item.idPublicacion}/${item.titulo.replace(/\s+/g, '-')}`}>
-                                    <div className='cardProdcutSelected'>
-                                        <img src={obtenerImagen(item)} alt={`${item?.titulo} - ${alt}`} />
-                                        <div className='cardTextSelected'>
-                                            <h4>{item.titulo}</h4>
-                                            {isScreenLarge ?
-                                                <>
-                                                    <span>{item.descripcion.slice(0, 120)}</span>
-                                                </> :
-                                                <>
-                                                    <span>{item.descripcion.slice(0, 60)}</span>
-                                                </>}
-                                            <h5> <FontAwesomeIcon icon={faMapMarkerAlt} /> {item.estado} -  {item.municipio}</h5>
-                                            <FontAwesomeIcon icon={faAngleDoubleRight} className='iconCard' />
-                                        </div>
+                                <Anchor key={item?.idPublicacion} to={`/${link}/${removeAccents(categorias?.find(cat => cat?.idCategoria === categoriaSeleccionada)?.categoria || '').replace(/\s+/g, '-')}/${removeAccents(item?.estado || '').replace(/\s+/g, '-')}/${item.idPublicacion}/${removeAccents(item.titulo || '').replace(/\s+/g, '-')}`} className='cardProdcutSelected'>
+                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - ${alt}`} />
+                                    <div className='cardTextSelected'>
+                                        <h4>{item.titulo}</h4>
+                                        {isScreenLarge ? (
+                                            <span>{item.descripcion.slice(0, 120)}</span>
+                                        ) : (
+                                            <span>{item.descripcion.slice(0, 60)}</span>
+                                        )}
+                                        <h5> <FontAwesomeIcon icon={faMapMarkerAlt} /> {item.estado} -  {item.municipio}</h5>
+                                        <FontAwesomeIcon icon={faAngleDoubleRight} className='iconCard' />
                                     </div>
                                 </Anchor>
                             ))}

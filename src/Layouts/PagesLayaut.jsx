@@ -3,6 +3,7 @@ import Nabvar from '../Components/Navbar/Navbar'
 import { Outlet } from 'react-router-dom';
 import { useMediaQuery } from '@react-hook/media-query';
 import Footer from '../Components/Footer/Footer'
+import ModalCokies from '../Components/ModalCokies/ModalCokies';
 export default function IndexLayout() {
 
 
@@ -20,7 +21,7 @@ export default function IndexLayout() {
                     <Outlet />
                     <Footer />
                 </>}
-
+            <ModalCokies />
             <div className='espaciobg2'>
 
             </div>

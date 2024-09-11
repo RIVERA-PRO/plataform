@@ -24,6 +24,10 @@ export default function PublicacionesData() {
     const [imagenSeleccionada, setImagenSeleccionada] = useState('');
     const [filtroId, setFiltroId] = useState('');
     const [filtroTitulo, setFiltroTitulo] = useState('');
+    const [filtroVista, setFiltroVista] = useState('');
+    const [filtroEstados, setFiltrEstados] = useState('');
+    const [filtroRecomendado, setFiltroRecomendado] = useState('');
+    const [filtroCategoria, setFiltroCategoria] = useState('');
     const [ordenInvertido, setOrdenInvertido] = useState(false);
     const [imagenPreview, setImagenPreview] = useState(null);
     const [imagenPreview2, setImagenPreview2] = useState(null);
@@ -65,7 +69,7 @@ export default function PublicacionesData() {
         setNuevoTitulo(publicacion.titulo);
         setNuevaDescripcion(publicacion.descripcion);
         setNuevaCategoria(publicacion.idCategoria)
-        setVista(publicacion.idCategoria)
+        setVista(publicacion.vista)
         setRecomendado(publicacion.recomendado)
         setMunicipio(publicacion.municipio)
         setEstado(publicacion.estado)
@@ -145,22 +149,25 @@ export default function PublicacionesData() {
 
 
     const Filtrados = publicaciones.filter(item => {
-        const idMatch = item.idPublicacion.toString().includes(filtroId);
-        const tituloMatch = !filtroTitulo || item.titulo.includes(filtroTitulo);
-        return idMatch && tituloMatch;
+        const idMatch = item.idPublicacion?.toString().includes(filtroId);
+        const categoriaMatch = item.idCategoria?.toString().includes(filtroCategoria);
+        const vistaMatch = item.vista?.toString().includes(filtroVista);
+        const estadoMatch = item.estado?.toString().includes(filtroEstados);
+        const recomendadoMatch = item.recomendado?.toString().includes(filtroRecomendado);
+        const tituloMatch = !filtroTitulo || item.titulo?.includes(filtroTitulo);
+        return idMatch && tituloMatch && categoriaMatch && recomendadoMatch && vistaMatch && estadoMatch;
     });
 
     const descargarExcel = () => {
         const data = Filtrados.map(item => ({
             idPublicacion: item.idPublicacion,
             Titulo: item.titulo,
-            Descripcion: item.descripcion,
-            Categoria: item.categoria,
+            // Descripcion: item.descripcion,
+            // Categoria: item.categoria,
+            Estado: item.estado,
+            Municipio: item.municipio,
+            Telefono: item.telefono,
             Fecha: item.createdAt,
-            Imagen1: item.imagen1,
-            Imagen2: item.imagen2,
-            Imagen3: item.imagen3,
-            Imagen4: item.imagen4,
 
         }));
 
@@ -177,16 +184,22 @@ export default function PublicacionesData() {
         const columns = [
             { title: 'idPublicacion', dataKey: 'idPublicacion' },
             { title: 'Titulo', dataKey: 'titulo' },
-            { title: 'Descripcion', dataKey: 'descripcion' },
-            { title: 'Categoria', dataKey: 'categoria' },
+            // { title: 'Descripcion', dataKey: 'descripcion' },
+            // { title: 'Categoria', dataKey: 'categoria' },
+            { title: 'Estado', dataKey: 'estado' },
+            { title: 'Municipio', dataKey: 'municipio' },
+            { title: 'Telefono', dataKey: 'telefono' },
             { title: 'Fecha', dataKey: 'createdAt' },
         ];
 
         const data = Filtrados.map(item => ({
             idPublicacion: item.idPublicacion,
             Titulo: item.titulo,
-            Descripcion: item.descripcion,
+            // Descripcion: item.descripcion,
             Categoria: item.categoria,
+            Estado: item.estado,
+            Municipio: item.municipio,
+            Telefono: item.telefono,
             Fecha: item.createdAt,
 
         }));
@@ -327,7 +340,11 @@ export default function PublicacionesData() {
         setSelectedSection(section);
     };
 
-
+    const removeAccents = (str) => {
+        if (!str) return ''; // Maneja casos en los que str sea undefined o null
+        const accents = /[\u0300-\u036f]/g;
+        return str.normalize("NFD").replace(accents, "");
+    };
 
 
     return (
@@ -351,7 +368,40 @@ export default function PublicacionesData() {
                         <input type="text" value={filtroTitulo} onChange={(e) => setFiltroTitulo(e.target.value)} placeholder='Titulo' />
                     </div>
 
-
+                    <div className='inputsColumn'>
+                        <select value={filtroCategoria} onChange={(e) => setFiltroCategoria(e.target.value)}>
+                            <option value="">Categorias</option>
+                            {
+                                categorias.map(item => (
+                                    <option value={item?.idCategoria}>{item?.categoria}</option>
+                                ))
+                            }
+                        </select>
+                    </div>
+                    <div className='inputsColumn'>
+                        <select value={filtroEstados} onChange={(e) => setFiltrEstados(e.target.value)}>
+                            <option value="">Estados</option>
+                            {
+                                estadosYmunicipios.map(item => (
+                                    <option value={item?.nombre}>{item?.nombre}</option>
+                                ))
+                            }
+                        </select>
+                    </div>
+                    <div className='inputsColumn'>
+                        <select value={filtroVista} onChange={(e) => setFiltroVista(e.target.value)}>
+                            <option value="">Vista</option>
+                            <option value="visible">Visible</option>
+                            <option value="no-visible">No visible</option>
+                        </select>
+                    </div>
+                    <div className='inputsColumn'>
+                        <select value={filtroRecomendado} onChange={(e) => setFiltroRecomendado(e.target.value)}>
+                            <option value="">Recomendado</option>
+                            <option value="si">Si</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
                     <button className='reload' onClick={recargar}><FontAwesomeIcon icon={faSync} /></button>
                     <button className='reverse' onClick={invertirOrden}>
                         {ordenInvertido ? <FontAwesomeIcon icon={faArrowUp} /> : <FontAwesomeIcon icon={faArrowDown} />}
@@ -402,7 +452,7 @@ export default function PublicacionesData() {
                         <div className='sectiontext' style={{ display: selectedSection === 'texto' ? 'flex' : 'none' }}>
                             <div className='flexGrap'>
                                 <fieldset>
-                                    <legend>Titulo</legend>
+                                    <legend>Titulo (obligatorio)</legend>
                                     <input
                                         type="text"
                                         value={nuevoTitulo !== '' ? nuevoTitulo : publicacion.titulo}
@@ -410,7 +460,7 @@ export default function PublicacionesData() {
                                     />
                                 </fieldset>
                                 <fieldset>
-                                    <legend>Telefono</legend>
+                                    <legend>Telefono (obligatorio)</legend>
                                     <input
                                         type="number"
                                         value={telefono !== '' ? telefono : publicacion.telefono}
@@ -418,20 +468,13 @@ export default function PublicacionesData() {
                                     />
                                 </fieldset>
                                 <fieldset>
-                                    <legend>Categoria</legend>
+                                    <legend>Categoria (obligatorio)</legend>
                                     <select
                                         value={nuevaCategoria !== '' ? nuevaCategoria : publicacion.categoria}
                                         onChange={(e) => setNuevaCategoria(e.target.value)}
                                     >
 
-                                        {
-                                            categorias
-                                                .filter(categoriaFiltrada => categoriaFiltrada.idCategoria === publicacion.idCategoria)
-                                                .map(categoriaFiltrada => (
 
-                                                    <option value={publicacion.categoria}> {categoriaFiltrada.categoria}</option>
-                                                ))
-                                        }
 
                                         {
                                             categorias.map(item => (
@@ -460,7 +503,7 @@ export default function PublicacionesData() {
                                     </select>
                                 </fieldset>
                                 <fieldset id='descripcion'>
-                                    <legend>Descripcion</legend>
+                                    <legend>Descripcion (obligatorio)</legend>
                                     <textarea
                                         type="text"
                                         id="nuevaDescripcion"
@@ -469,6 +512,30 @@ export default function PublicacionesData() {
                                         value={nuevaDescripcion !== '' ? nuevaDescripcion : publicacion.descripcion}
                                         onChange={(e) => setNuevaDescripcion(e.target.value)}
                                     />
+                                </fieldset>
+
+
+                                <fieldset>
+                                    <legend>Recomendado (obligatorio)</legend>
+                                    <select
+                                        value={recomendado !== '' ? recomendado : publicacion.recomendado}
+                                        onChange={(e) => setRecomendado(e.target.value)}
+                                    >
+
+                                        <option value="si">Si</option>
+                                        <option value="no">No</option>
+                                    </select>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Vista (obligatorio)</legend>
+                                    <select
+                                        value={vista !== '' ? vista : publicacion.vista}
+                                        onChange={(e) => setVista(e.target.value)}
+                                    >
+
+                                        <option value="visible">Visible</option>
+                                        <option value="no-visible">No visible</option>
+                                    </select>
                                 </fieldset>
 
                             </div>
@@ -627,7 +694,7 @@ export default function PublicacionesData() {
                                     <button className='editar' onClick={() => abrirModal(item)}>
                                         <FontAwesomeIcon icon={faEdit} />
                                     </button>
-                                    <Anchor className='editar' to={`/${link}/${item?.idPublicacion}/${item?.titulo?.replace(/\s+/g, '-')}`}>
+                                    <Anchor className='editar' to={`/${link}/${removeAccents(categorias?.find(cat => cat?.idCategoria === item?.idCategoria)?.categoria?.replace(/\s+/g, '-') || '')}/${removeAccents(item?.estado?.replace(/\s+/g, '-'))}/${item?.idPublicacion}/${removeAccents(item?.titulo?.replace(/\s+/g, '-'))}`}>
                                         <FontAwesomeIcon icon={faEye} />
                                     </Anchor>
                                 </td>

@@ -6,6 +6,7 @@ import { faSearch, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import Modal from 'react-modal';
 import baseURL from '../url';
 import link from '../link';
+
 export default function InputSearchs() {
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredResults, setFilteredResults] = useState([]);
@@ -22,7 +23,7 @@ export default function InputSearchs() {
     }, []);
 
     const cargarProductos = () => {
-        fetch(`${baseURL}/publicacionesGet.php`, {
+        fetch(`${baseURL}/publicacionesFront.php`, {
             method: 'GET',
         })
             .then(response => response.json())
@@ -41,6 +42,10 @@ export default function InputSearchs() {
                 setCategorias(data.categorias || []);
             })
             .catch(error => console.error('Error al cargar categorías:', error));
+    };
+
+    const eliminarAcentos = (texto) => {
+        return texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
     };
 
     const handleSearch = (event) => {
@@ -71,6 +76,7 @@ export default function InputSearchs() {
     const closeModal = () => {
         setModalIsOpen(false);
     };
+
     return (
         <div className="fondo-input">
             <div className="search-container">
@@ -97,7 +103,7 @@ export default function InputSearchs() {
                                     <hr />
                                     {productos.map((producto) => (
                                         <div key={producto.idPublicacion}>
-                                            <Link to={`/${link}/${producto.idPublicacion}/${producto.titulo.replace(/\s+/g, '-')}`} onClick={closeModal}>
+                                            <Link to={`/${link}/${eliminarAcentos(categoria.categoria).replace(/\s+/g, '-')}/${eliminarAcentos(producto.estado).replace(/\s+/g, '-')}/${producto.idPublicacion}/${eliminarAcentos(producto.titulo).replace(/\s+/g, '-')}`} onClick={closeModal}>
                                                 <img src={producto.imagen1} alt="" />
                                                 <div>
                                                     <h5>{producto.titulo}</h5>

@@ -8,6 +8,7 @@ import TitleSection from '../../Components/TitleSection/TitleSection'
 import BtnWhatsapp from '../../Components/BtnWhatsapp/BtnWhatsapp'
 import logo from '../../images/logo.png'
 import CategoriSection from '../../Components/CategoriSection/CategoriSection'
+import BgSection from '../../Components/BgSection/BgSection'
 export default function Demo() {
     return (
         <section className='demo'>
@@ -16,7 +17,10 @@ export default function Demo() {
             <CategoriSection />
             <PublicacionesHome />
             <BtnWhatsapp />
-            <TitleSection title='Mamis Vip' description="El portal más grande de clasificados porno" logo={logo} />
+            <BgSection />
+            <TitleSection title='Mamis Vip' description="Mamis VIP México somos una plataforma de hospedaje web para ANUNCIOS CLASIFICADOS PORNO verificados que conecta de forma independiente al Usuario con el Anunciante desde el año 2009 con sede en Victoria, Seychelles para la comunidad mexicana." logo={logo} />
+
+
             <Footer />
 
         </section>
