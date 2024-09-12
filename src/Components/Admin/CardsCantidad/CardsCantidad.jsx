@@ -66,7 +66,7 @@ export default function CardsCantidad() {
             .then(data => {
                 setPublicaciones(data.publicaciones || []);
             })
-            .catch(error => console.error('Error al cargar publiaciones:', error));
+            .catch(error => console.error('Error al cargar Publicaciones:', error));
     };
 
     return (
@@ -78,7 +78,7 @@ export default function CardsCantidad() {
                 <FontAwesomeIcon icon={faBook} className='icons' />
                 <div className='deColumn'>
 
-                    <h3>Publiaciones</h3>
+                    <h3>Publicaciones</h3>
                     <h2>{publicaciones.length}</h2>
                 </div>
 
