@@ -12,8 +12,8 @@
     color: var(--blanco);
 }
 .FooterContain a img{
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 10px;
     
 }
@@ -63,7 +63,7 @@
     margin-bottom: 10px;
 }
 .footerText a{
-
+   
     color: var(--blanco);
 }
 .socials{
@@ -75,8 +75,22 @@
     color: var(--blanco)!important;
 }
 
+#enlace a{
+    text-transform: capitalize;
 
+}
+.trata{
+    color: var(--blanco);
+    text-align: center;
+    margin-top: 2rem;
+    padding: 0 18%;
+}
 
+.trata img{
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+}
 
 @media (max-width: 900px){
     .FooterContain{
@@ -100,5 +114,8 @@
     color: var(--blanco);
     width: 90%;
     font-size: 14px;
+}
+.trata{
+    padding: 0 3%;
 }
 }

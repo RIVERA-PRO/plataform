@@ -4,7 +4,7 @@ import './Detail.css'
 import Modal from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faMapMarkerAlt, faExternalLinkAlt, faStar, faTrash, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faMapMarkerAlt, faExternalLinkAlt, faStar, faUser, faImage, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Link as Anchor, useNavigate, useLocation } from "react-router-dom";
 import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -323,18 +323,19 @@ export default function Detail() {
                 <div className="textDetail">
                     <h2 className="title">{publicacion.titulo}</h2>
                     <hr />
-
-                    <div className="deFLexBuet">
-
-                        <Anchor to={`https://www.google.com/maps?q=${encodeURIComponent(publicacion.estado, publicacion.municipio)}`} target="_blank">   <FontAwesomeIcon icon={faMapMarkerAlt} /> {publicacion.estado} - {publicacion.municipio}</Anchor>
-
+                    <div className="veifi">
+                        <strong><FontAwesomeIcon icon={faUser} /> Usuario verificado      <FontAwesomeIcon icon={faImage} />Imagen verificada</strong>
                     </div>
+                    <div className="deFLexBuet">
+                        <Anchor to={`https://www.google.com/maps?q=${encodeURIComponent(publicacion.estado, publicacion.municipio)}`} target="_blank">   <FontAwesomeIcon icon={faMapMarkerAlt} /> {publicacion.estado} - {publicacion.municipio}</Anchor>
+                    </div>
+
                     <div className="deFLexBuet">
                         {
                             categorias
                                 .filter(categoriaFiltrada => categoriaFiltrada.idCategoria === publicacion.idCategoria)
                                 .map(categoriaFiltrada => (
-                                    <h4 className="categori">{categoriaFiltrada.categoria}</h4>
+                                    <h4 className="categori">    <FontAwesomeIcon icon={faStar} /> {categoriaFiltrada.categoria}</h4>
 
                                 ))
                         }

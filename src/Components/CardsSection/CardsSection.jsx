@@ -6,7 +6,7 @@ import baseURL from '../url';
 import alt from '../alt';
 import link from '../link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faStar, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 
 // Función para eliminar acentos
 const removeAccents = (str) => {
@@ -76,7 +76,7 @@ export default function CardsSection() {
     return (
         <div>
             <div className='cardProfile'>
-                <img src={logo} alt="motos de segunda" />
+                <img src={logo} alt={alt} />
                 <h2>{contactos.nombre}</h2>
 
                 <Anchor to={`mailto:${contactos.email}`} target="_blank">{contactos.email}</Anchor>
@@ -97,6 +97,15 @@ export default function CardsSection() {
                 ) : (
                     <div>
                         <div className='cardPublicLateral'>
+                            {publicaciones?.length > 0 ? (
+                                <div className='deFlexTitlesection'>
+                                    <h3>   <FontAwesomeIcon icon={faStar} />  Podría interesarte</h3>
+                                    <hr />
+                                    <FontAwesomeIcon icon={faAngleDoubleRight} className='iconSection' />
+                                </div>
+                            ) : (
+                                <></>
+                            )}
                             {publicaciones?.filter(item => item.recomendado === "si").slice(0, 4).map(item => (
                                 <Anchor
                                     className='cardPublicLateralPubl'

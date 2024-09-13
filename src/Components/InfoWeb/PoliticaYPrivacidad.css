@@ -49,3 +49,21 @@
     flex-direction: column;
  
 }
+
+
+iframe{
+    width: 100%;
+    border: none;
+}
+
+@media (max-width: 900px){
+    .InfoContain h3{
+        font-size: 20px;
+    }
+    .InfoContain h4{
+        font-size: 15px;
+    }
+    .InfoContain h1{
+        font-size: 25px;
+    }
+}

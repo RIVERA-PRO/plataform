@@ -1,0 +1,38 @@
+.PalabrasClave{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.073);
+    margin: 50px 10%;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: 20px;
+    background-color: var(--blanco);
+}
+.palabraClave{
+    padding: 10px 20px;
+    background-color: var(--color1);
+    color: var(--blanco);
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid var(--color1);
+}
+
+.palabraClave:hover{
+    background-color: var(--blanco);
+    color: var(--color1);
+}
+
+@media (max-width: 700px){
+    .PalabrasClave{
+        margin: 20px 3%;
+        padding: 20px 10px;
+        gap: 10px;
+       
+    }
+    .palabraClave{
+        padding: 8px 20px;
+        font-size: 13px;
+    }
+}

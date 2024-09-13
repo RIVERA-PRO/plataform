@@ -11,12 +11,25 @@ import { faHome, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 // Función para eliminar acentos
 const removeAccents = (str) => {
+    if (!str) return ''; // Maneja casos en los que str sea undefined o null
     const accents = /[\u0300-\u036f]/g;
     return str.normalize("NFD").replace(accents, "");
 };
 
+// Función para obtener el formato amigable de la clave
+const formatClave = (str) => {
+    return str ? str.replace(/-/g, ' ') : '';
+};
+
+// Función para comprobar si alguna palabra en clave está en el texto
+const matchesKeyword = (keyword, text) => {
+    const keywordWords = removeAccents(keyword.toLowerCase()).split(/\s+/);
+    const textWords = removeAccents(text.toLowerCase()).split(/\s+/);
+    return keywordWords.some(word => textWords.includes(word));
+};
+
 export default function PublicacionesFilter() {
-    const { idCategoria, estado, categoria } = useParams();
+    const { idCategoria, estado, categoria, municipio, clave } = useParams();
     const [categorias, setCategorias] = useState([]);
     const [loading, setLoading] = useState(true);
     const [publicaciones, setPublicacions] = useState([]);
@@ -29,16 +42,25 @@ export default function PublicacionesFilter() {
     }, []);
 
     useEffect(() => {
-        // Desformatear el estado
+        // Desformatear el estado y el municipio
         const estadoOriginal = estado?.replace(/-/g, ' ');
+        const municipioOriginal = municipio && municipio !== 'item' ? municipio.replace(/-/g, ' ') : '';
 
-        // Filtrar las publicaciones por idCategoria y estado
-        const filtradas = publicaciones?.filter(publicacion =>
-            publicacion?.idCategoria === parseInt(idCategoria) &&
-            removeAccents(publicacion?.estado.toLowerCase()) === removeAccents(estadoOriginal.toLowerCase())
-        );
+        // Filtrar las publicaciones por idCategoria, estado, municipio y clave
+        const filtradas = publicaciones?.filter(publicacion => {
+            const matchesCategoria = idCategoria && idCategoria !== 'item' ? publicacion?.idCategoria === parseInt(idCategoria) : true;
+            const matchesEstado = estado && estado !== 'item' ? removeAccents(publicacion?.estado.toLowerCase()) === removeAccents(estadoOriginal?.toLowerCase()) : true;
+            const matchesMunicipio = municipio && municipio !== 'item' ? removeAccents(publicacion?.municipio.toLowerCase()) === removeAccents(municipioOriginal?.toLowerCase()) : true;
+            const matchesClave = clave && clave !== 'item' ? (
+                matchesKeyword(clave, publicacion?.titulo) ||
+                matchesKeyword(clave, publicacion?.descripcion)
+            ) : true;
+
+            return matchesCategoria && matchesEstado && matchesMunicipio && matchesClave;
+        });
+
         setFilteredPublicaciones(filtradas);
-    }, [publicaciones, idCategoria, estado]);
+    }, [publicaciones, idCategoria, estado, municipio, categoria, clave]);
 
     const cargarPublicaciones = () => {
         fetch(`${baseURL}/publicacionesFront.php`, {
@@ -91,17 +113,40 @@ export default function PublicacionesFilter() {
         <div className='PublicacionesFilter'>
             <div className="linksSection">
                 <Anchor to={'/'}>
-                    <FontAwesomeIcon icon={faHome} />  Inicio
+                    <FontAwesomeIcon icon={faHome} /> Inicio
                 </Anchor>
-                -
-                <Anchor to={''}>
-                    {categoria}
-                </Anchor>
-                -
-                <Anchor to={''}>
-                    {removeAccents(estado?.replace(/-/g, ' '))}
-                </Anchor>
-                -
+                {categoria && categoria !== 'item' && (
+                    <>
+                        -
+                        <Anchor to={''}>
+                            {removeAccents(categoria?.replace(/-/g, ' '))}
+                        </Anchor>
+                    </>
+                )}
+                {estado && estado !== 'item' && (
+                    <>
+                        -
+                        <Anchor to={''}>
+                            {removeAccents(estado?.replace(/-/g, ' '))}
+                        </Anchor>
+                    </>
+                )}
+                {municipio && municipio !== 'item' && (
+                    <>
+                        -
+                        <Anchor to={''}>
+                            {removeAccents(municipio?.replace(/-/g, ' '))}
+                        </Anchor>
+                    </>
+                )}
+                {clave && clave !== 'item' && (
+                    <>
+                        -
+                        <Anchor to={''}>
+                            {formatClave(clave)}
+                        </Anchor>
+                    </>
+                )}
                 <Anchor to={''}>
                     ({filteredPublicaciones?.length})
                 </Anchor>
@@ -110,7 +155,7 @@ export default function PublicacionesFilter() {
             <div className="cardGrap">
                 {filteredPublicaciones?.length > 0 ? (
                     filteredPublicaciones?.map(publicacion => (
-                        <Anchor className="cardPublic" key={publicacion?.idPublicacion} to={`/${link}/${removeAccents(categoria).replace(/\s+/g, '-')}/${removeAccents(estado).replace(/\s+/g, '-')}/${publicacion?.idPublicacion}/${removeAccents(publicacion?.titulo || '').replace(/\s+/g, '-')}`}>
+                        <Anchor className="cardPublic" key={publicacion?.idPublicacion} to={`/${link}/${removeAccents(categorias?.find(cat => cat?.idCategoria === publicacion?.idCategoria)?.categoria || '').replace(/\s+/g, '-')}/${removeAccents(publicacion?.estado).replace(/\s+/g, '-')}/${publicacion?.idPublicacion}/${removeAccents(publicacion?.titulo || '').replace(/\s+/g, '-')}`}>
                             <img src={obtenerImagen(publicacion)} alt={`${publicacion?.titulo} - ${alt}`} />
                             <div className='cardText'>
                                 <h4>{publicacion?.titulo}</h4>
@@ -125,7 +170,28 @@ export default function PublicacionesFilter() {
                     ))
                 ) : (
                     <div className="noResultText">
-                        <p>No hay publicaciones disponibles en esta categoría y estado.</p>
+                        <p>No hay resultados disponibles de
+                            <br />{categoria && categoria !== 'item' && (
+                                <>
+                                    {removeAccents(categoria?.replace(/-/g, ' '))} en
+                                </>
+                            )}
+                            {estado && estado !== 'item' && (
+                                <>
+                                    , {removeAccents(estado?.replace(/-/g, ' '))}
+                                </>
+                            )}
+                            {municipio && municipio !== 'item' && (
+                                <>
+                                    , {removeAccents(municipio?.replace(/-/g, ' '))}
+                                </>
+                            )}
+                            {clave && clave !== 'item' && (
+                                <>
+                                    {formatClave(clave?.replace(/-/g, ' '))}
+                                </>
+                            )}
+                        </p>
                     </div>
                 )}
             </div>

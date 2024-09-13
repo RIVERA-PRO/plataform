@@ -304,6 +304,24 @@ hr{
     padding: 6px 30px;
     border-radius: 10px;
 }
+
+.veifi{
+    background-color: rgb(30, 184, 30);
+    color: var(--blanco);
+    padding: 8px;
+  
+    border-radius: 4px;
+    text-align: center;
+    width: 100%;
+}
+.veifi strong{
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
 @media (max-width: 1024px) {
     .textDetail .contactBtn{
         width: 100%;
@@ -362,9 +380,6 @@ hr{
     }
     .textDetail{
         padding: 20px;
-        margin-top: -2rem;
-        border-radius:20px 20px 0 0 ;
-        background-color: var(--blanco);
         z-index: 2;
         
 }

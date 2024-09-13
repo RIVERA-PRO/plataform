@@ -88,4 +88,33 @@ a{
 }
   }
  
- 
+/* Evitar la selección de texto */
+body, p, span, h1, h2, h3, h4, h5, h6, div {
+  -webkit-user-select: none; /* Para navegadores basados en WebKit (Chrome, Safari) */
+  -moz-user-select: none;    /* Para Firefox */
+  -ms-user-select: none;     /* Para Internet Explorer/Edge */
+  user-select: none;         /* Estándar para otros navegadores */
+}
+
+/* Evitar la selección de imágenes */
+img {
+  -webkit-user-drag: none;   /* Para navegadores WebKit (Chrome, Safari) */
+  -khtml-user-drag: none;    /* Para versiones antiguas de Safari */
+  -moz-user-drag: none;      /* Para Firefox */
+  -o-user-drag: none;        /* Para versiones antiguas de Opera */
+  user-drag: none;           /* Estándar */
+  pointer-events: none;      /* Evita clic derecho en imágenes y el arrastre */
+}
+
+/* Evitar el clic derecho en todo el contenido */
+body {
+  -webkit-touch-callout: none; /* Desactiva el menú contextual en iOS */
+}
+
+/* Evitar la copia de contenido */
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

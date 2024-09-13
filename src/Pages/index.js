@@ -2,7 +2,7 @@ import IndexLayout from "../Layouts/IndexLayout";
 import MainLayout from "../Layouts/MainLayout";
 import PagesLayaut from '../Layouts/PagesLayaut'
 import { createBrowserRouter } from "react-router-dom";
-import Usuarios from '../Pages/Usuarios/Usuarios'
+import Usuarios from '../Pages/Usuarios/Usuarios';
 import Banners from "./Banners/Banners";
 import Main from "./Main/Main";
 import Contacto from "./Contacto/Contacto";
@@ -12,12 +12,11 @@ import Categorias from "./Categorias/Categorias";
 import PublicacionesFilterPage from "./PublicacionesFilterPage/PublicacionesFilterPage";
 import PagesInfo from "./PagesInfo/PagesInfo";
 import link from "../Components/link";
-export const router = createBrowserRouter([
 
+export const router = createBrowserRouter([
     {
         path: "/",
         element: <IndexLayout />,
-
     },
     {
         path: "/",
@@ -28,20 +27,15 @@ export const router = createBrowserRouter([
                 element: <PageDetail />,
             },
             {
-                path: `/${link}/:categoria/:idCategoria/:estado`,
+                path: `/${link}/busqueda/:categoria?/:idCategoria?/:estado?/:municipio?/:clave?`, // clave es opcional
                 element: <PublicacionesFilterPage />,
             },
-
-
             {
                 path: `/${link}/:info`,
                 element: <PagesInfo />,
             },
-
-
         ]
     },
-
     {
         path: "/",
         element: <MainLayout />,
@@ -50,7 +44,6 @@ export const router = createBrowserRouter([
                 path: `/dashboard`,
                 element: <Main />,
             },
-
             {
                 path: `/dashboard/usuarios`,
                 element: <Usuarios />,
@@ -71,9 +64,6 @@ export const router = createBrowserRouter([
                 path: `/dashboard/categorias`,
                 element: <Categorias />,
             },
-
         ],
     },
-
-
 ]);

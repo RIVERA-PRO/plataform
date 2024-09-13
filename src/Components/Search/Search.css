@@ -1,0 +1,68 @@
+.Search{
+    margin: 20px 10% 30px;
+    padding: 20px 0 ;
+    background-color: var(--blanco);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.073);
+    border-radius: 10px;
+}
+
+
+.filterSectionInputs{
+   
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    place-content: center;
+}
+
+.filterSectionInputs select{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--blanco);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.073);
+    color: var(--text-color2);
+    font-size: 17px;
+    width: 47%;
+}
+.filterSectionInputs button{
+    background-color: var(--color1);
+    color: var(--blanco);
+    width: 47%;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.073);
+}
+.filterSectionInputsLoading{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    place-content: center;
+}
+.inputLoading{
+    width: 47%;
+    height: 3rem;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #e8e6e6, #fff, #fff);
+    background-size: 400% 400%;
+    animation: gradientMove 1s linear infinite;
+    
+}
+@media (max-width: 700px){
+    .Search{
+        margin: 20px 3% 0px;
+        padding: 20px 10px ;
+    }
+
+    .filterSectionInputs select{
+        width: 47%;
+    }
+    .filterSectionInputs button{
+      
+        width: 47%;
+    }
+    .inputLoading{
+        width: 47%;
+      
+    }
+}

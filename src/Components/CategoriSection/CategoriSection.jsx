@@ -121,7 +121,7 @@ export default function CategoriSection() {
                     >
                         {categorias?.map(item => {
                             // Filtrando las publicaciones que pertenecen a la categoría actual
-                            const publicacionesDeCategoria = publicaciones.filter(publicacion => publicacion.idCategoria === item.idCategoria);
+                            const publicacionesDeCategoria = publicaciones?.filter(publicacion => publicacion?.idCategoria === item?.idCategoria);
 
                             return (
                                 <SwiperSlide key={item.idCategoria} id='cardCategori'>
@@ -147,7 +147,7 @@ export default function CategoriSection() {
 
                 <div className='estadosCards'>
                     {filteredStates.map(estado => (
-                        <Anchor to={`${link}/${selectedCategoria?.categoria?.replace(/\s+/g, '-')}/${selectedCategoria?.idCategoria}/${estado.nombre?.replace(/\s+/g, '-')}`} key={estado?.nombre} className='estadosCard'>
+                        <Anchor to={`${link}/busqueda/${selectedCategoria?.categoria?.replace(/\s+/g, '-')}/${selectedCategoria?.idCategoria}/${estado.nombre?.replace(/\s+/g, '-')}`} key={estado?.nombre} className='estadosCard'>
                             <strong>  <FontAwesomeIcon icon={faMapMarkerAlt} />  {estado.nombre}</strong> <span>({estado.count})</span>
                         </Anchor>
                     ))}
