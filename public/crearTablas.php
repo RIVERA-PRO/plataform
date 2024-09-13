@@ -60,6 +60,17 @@ crearTablaSiNoExiste($conexion, 'categorias', $consultaCategorias);
     crearTablaSiNoExiste($conexion, 'banner', $consultaBanner);
 
 
+    // Crear tabla 'visitas' si no existe
+    $consultaVisitas = "CREATE TABLE IF NOT EXISTS `visitas` (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+    ip VARCHAR(45) NOT NULL,
+    userAgent VARCHAR(255) NOT NULL,
+    timestamp INT NOT NULL
+    )";
+    crearTablaSiNoExiste($conexion, 'visitas', $consultaVisitas);
+
+    
+
 // Crear tabla 'publicaciones' si no existe
 $consultaPublicaciones = "CREATE TABLE IF NOT EXISTS `publicaciones` (
     idPublicacion INT(11) AUTO_INCREMENT PRIMARY KEY,

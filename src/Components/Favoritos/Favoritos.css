@@ -42,6 +42,7 @@
     z-index: 999; 
     display: flex;
     justify-content: right;
+    z-index: 10000000;
 }
 
 

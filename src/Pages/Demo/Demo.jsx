@@ -15,17 +15,21 @@ import Search from '../../Components/Search/Search'
 import PalabrasClave from '../../Components/PalabrasClave/PalabrasClave'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
+import Visitas from '../../Components/Visitas/Visitas'
 export default function Demo() {
     const contacto = contact[0]
     return (
         <section className='demo'>
             <Banners />
+
             <Search />
             <BannersModal />
+
             <CategoriSection />
             <PublicacionesHome />
             <BtnWhatsapp />
             <BgSection />
+            <Visitas />
             <PublicacionesCardHome />
             <div className='sectionPading'>
                 <div className='deFlexTitlesection'>

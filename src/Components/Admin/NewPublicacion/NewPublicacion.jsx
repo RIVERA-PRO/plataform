@@ -3,6 +3,11 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import baseURL from '../../url';
 import estadosYmunicipios from '../../estadosYmunicipios';
+import palabrasClave from '../../palabrasClave';
+import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper/core';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
+SwiperCore.use([Navigation, Pagination, Autoplay]);
 export default function NewPublicacion() {
     const [mensaje, setMensaje] = useState('');
     const [imagenPreview1, setImagenPreview1] = useState(null);
@@ -28,6 +33,9 @@ export default function NewPublicacion() {
     const [municipios, setMunicipios] = useState([]);
     const [estadoSeleccionado, setEstadoSeleccionado] = useState('');
     const [municipioSeleccionado, setMunicipioSeleccionado] = useState('');
+    const handlePalabraClaveClick = (palabra) => {
+        setDescripcion(prevDescripcion => `${prevDescripcion}\n${palabra}`);
+    };
 
 
     useEffect(() => {
@@ -251,7 +259,7 @@ export default function NewPublicacion() {
                                 </fieldset>
 
                                 <fieldset id='descripcion'>
-                                    <legend>Descripción (obligatorio)</legend>
+                                    <legend>Descripción</legend>
                                     <textarea
                                         id="descripcion"
                                         name="descripcion"
@@ -260,6 +268,27 @@ export default function NewPublicacion() {
                                         onChange={(e) => setDescripcion(e.target.value)}
                                     />
                                 </fieldset>
+                                <div >
+
+                                </div>
+                                <Swiper
+                                    effect={'coverflow'}
+                                    grabCursor={true}
+                                    slidesPerView={'auto'}
+                                    id='palabras'
+                                >
+                                    {palabrasClave?.map((item, index) => (
+                                        <SwiperSlide
+                                            key={index}
+                                            type="button"
+                                            onClick={() => handlePalabraClaveClick(item)}
+                                            id='palabra'
+                                        >
+                                            {item}
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
+
                                 <fieldset>
                                     <legend>Recomendado (obligatorio)</legend>
                                     <select

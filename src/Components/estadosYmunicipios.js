@@ -132,7 +132,14 @@ const estadosYmunicipios = [
             "Zihuatanejo",
             "Tlapa",
             "Coyuca de Benítez",
-            "Tecpan de Galeana"
+            "Tecpan de Galeana",
+            "Acapulco de Juárez",
+            "Chilpancingo de los Bravo",
+            "Iguala de la Independencia",
+            "Taxco de Alarcón",
+            "Zihuatanejo de Azueta",
+            "Ayutla de los Libres",
+            "Ometepec"
         ]
     },
     {
@@ -162,7 +169,7 @@ const estadosYmunicipios = [
         ]
     },
     {
-        nombre: "México",
+        nombre: "Estado de México",
         municipios: [
             "Toluca",
             "Ecatepec",
@@ -247,19 +254,7 @@ const estadosYmunicipios = [
             "Xochimilco"
         ]
     },
-    {
-        nombre: "Guerrero",
-        municipios: [
-            "Acapulco de Juárez",
-            "Chilpancingo de los Bravo",
-            "Iguala de la Independencia",
-            "Taxco de Alarcón",
-            "Zihuatanejo de Azueta",
-            "Ayutla de los Libres",
-            "Coyuca de Benítez",
-            "Ometepec"
-        ]
-    },
+
     {
         nombre: "Oaxaca",
         municipios: [

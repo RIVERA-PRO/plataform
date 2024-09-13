@@ -13,6 +13,11 @@ import { Link as Anchor } from "react-router-dom";
 import './PublicacionesData.css'
 import estadosYmunicipios from '../../estadosYmunicipios';
 import link from '../../link';
+import palabrasClave from '../../palabrasClave';
+import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper/core';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css';
+SwiperCore.use([Navigation, Pagination, Autoplay]);
 export default function PublicacionesData() {
     const [publicaciones, setPublicaciones] = useState([]);
     const [modalVisible, setModalVisible] = useState(false);
@@ -48,7 +53,9 @@ export default function PublicacionesData() {
     const [municipios, setMunicipios] = useState([]);
     const [estadoSeleccionado, setEstadoSeleccionado] = useState('');
     const [municipioSeleccionado, setMunicipioSeleccionado] = useState('');
-
+    const handlePalabraClaveClick = (palabra) => {
+        setNuevaDescripcion(prevDescripcion => `${prevDescripcion}\n${palabra}`);
+    };
     const cerrarModalImagen = () => {
         setModalImagenVisible(false);
     };
@@ -455,7 +462,7 @@ export default function PublicacionesData() {
                                     <legend>Titulo (obligatorio)</legend>
                                     <input
                                         type="text"
-                                        value={nuevoTitulo !== '' ? nuevoTitulo : publicacion.titulo}
+                                        value={nuevoTitulo}
                                         onChange={(e) => setNuevoTitulo(e.target.value)}
                                     />
                                 </fieldset>
@@ -463,7 +470,7 @@ export default function PublicacionesData() {
                                     <legend>Telefono (obligatorio)</legend>
                                     <input
                                         type="number"
-                                        value={telefono !== '' ? telefono : publicacion.telefono}
+                                        value={telefono}
                                         onChange={(e) => setTelefono(e.target.value)}
                                     />
                                 </fieldset>
@@ -509,11 +516,27 @@ export default function PublicacionesData() {
                                         id="nuevaDescripcion"
                                         name="nuevaDescripcion"
                                         required
-                                        value={nuevaDescripcion !== '' ? nuevaDescripcion : publicacion.descripcion}
+                                        value={nuevaDescripcion}
                                         onChange={(e) => setNuevaDescripcion(e.target.value)}
                                     />
                                 </fieldset>
-
+                                <Swiper
+                                    effect={'coverflow'}
+                                    grabCursor={true}
+                                    slidesPerView={'auto'}
+                                    id='palabras'
+                                >
+                                    {palabrasClave?.map((item, index) => (
+                                        <SwiperSlide
+                                            key={index}
+                                            type="button"
+                                            onClick={() => handlePalabraClaveClick(item)}
+                                            id='palabra'
+                                        >
+                                            {item}
+                                        </SwiperSlide>
+                                    ))}
+                                </Swiper>
 
                                 <fieldset>
                                     <legend>Recomendado (obligatorio)</legend>

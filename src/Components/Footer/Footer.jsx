@@ -48,7 +48,8 @@ export default function Footer() {
 
 
                 <div className='footerText' id='enlace'>
-                    <h3>Enlaces</h3>
+                    <h3>Ligas de interés</h3>
+                    <Anchor to={'/'}>Inicio</Anchor>
                     {
                         links.map(item => (
                             <a
@@ -67,6 +68,7 @@ export default function Footer() {
                     Si tú o alguien que conoces necesita ayuda, por favor visita trafficking.help para encontrar las organizaciones en tu país que puedan colaborar.</p>
             </div>
             <p className='COPYRIGHT'>© COPYRIGHT 2024 </p>
+            <p className='COPYRIGHT'>Desarrollado por   <Anchor to={''}>Jr dev</Anchor></p>
         </div >
     )
 }

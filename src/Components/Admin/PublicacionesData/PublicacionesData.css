@@ -497,6 +497,26 @@ fieldset input{
 #deNoneInput{
     display: none;
 }
+
+#palabras{
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+ 
+    overflow: hidden;
+}
+
+#palabra{
+    width: auto;
+    padding: 5px 15px;
+    background-color: var(--color1);
+    color: var(--blanco);
+    border-radius: 10px;
+    cursor: pointer;
+    border: 1px solid var(--color1);
+    margin-right: 10px;
+    
+}
 @media (max-width: 824px){
     .previevProduct img{
         width: 100px;

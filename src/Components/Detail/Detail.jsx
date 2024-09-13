@@ -4,7 +4,7 @@ import './Detail.css'
 import Modal from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faMapMarkerAlt, faExternalLinkAlt, faStar, faUser, faImage, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft, faMapMarkerAlt, faExternalLinkAlt, faStar, faUser, faImage, faHeart, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 import { Link as Anchor, useNavigate, useLocation } from "react-router-dom";
 import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -16,6 +16,8 @@ import DetailLoading from "../DetailLoading/DetailLoading";
 import alt from '../alt';
 import link from '../link';
 import { useMediaQuery } from '@react-hook/media-query';
+import PalabrasClave from '../PalabrasClave/PalabrasClave'
+import Visitas from '../Visitas/Visitas'
 export default function Detail() {
     const navigate = useNavigate();
     const swiperRef = useRef(null);
@@ -26,16 +28,12 @@ export default function Detail() {
     const [modalImage, setModalImage] = useState("");
     const [publicaciones, setPublicaciones] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [contactos, setContactos] = useState([]);
     const [favoritos, setFavoritos] = useState([]);
-    const [contactoSeleccionado, setContactoSeleccionado] = useState(null);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
     const [categorias, setCategorias] = useState([]);
     const location = useLocation();
     const isScreenLarge = useMediaQuery('(min-width: 900px)');
     useEffect(() => {
         cargarPublicaciones();
-        cargarContacto();
         cargarFavoritos();
         cargarCategoria()
 
@@ -51,16 +49,7 @@ export default function Detail() {
             })
             .catch(error => console.error('Error al cargar contactos:', error));
     };
-    const cargarContacto = () => {
-        fetch(`${baseURL}/contactoGet.php`, {
-            method: 'GET',
-        })
-            .then(response => response.json())
-            .then(data => {
-                setContactos(data.contacto || []);
-            })
-            .catch(error => console.error('Error al cargar contactos:', error));
-    };
+
 
     const mezclarArray = (array) => {
         let arreglo = [...array];
@@ -343,7 +332,7 @@ export default function Detail() {
 
 
                     <div className='deFlexBtnsData'>
-                        <button onClick={handleCallClick} className='btnTel'><i className="fa fa-phone"></i>Teléfono </button>
+                        {/* <button onClick={handleCallClick} className='btnTel'><i className="fa fa-phone"></i>Teléfono </button> */}
                         <button onClick={handleWhatsappClick} className='btnWpp'><i className="fa fa-whatsapp"></i>WhatsApp </button>
                     </div>
                 </div>
@@ -374,13 +363,16 @@ export default function Detail() {
                     }</strong>
                     <strong>Estado   <span>{publicacion.estado}</span></strong>
                     <strong>Municipio   <span>{publicacion.municipio}</span></strong>
-                    <strong>Teléfono <span>{publicacion.telefono}</span></strong>
                 </div>
                 <p>{publicacion.descripcion}</p>
 
             </div>
 
-            <h3 className="titleSection">Vínculos que podrían interesarte</h3>
+            <div className='deFlexTitlesection'>
+                <h3>   <FontAwesomeIcon icon={faStar} /> Podría interesarte</h3>
+                <hr />
+                <FontAwesomeIcon icon={faAngleDoubleRight} className='iconSection' />
+            </div>
 
             <Swiper
                 effect={'coverflow'}
@@ -409,7 +401,8 @@ export default function Detail() {
                     </SwiperSlide>
                 ))}
             </Swiper>
-
+            <Visitas />
+            <PalabrasClave />
         </div >
 
     )

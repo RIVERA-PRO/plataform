@@ -18,7 +18,7 @@
    align-items: center;
    border: none;
    font-size: 17px;
-   z-index: 2;
+   z-index: 10000000;
    cursor: pointer;
    box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.196);
 }
@@ -46,7 +46,7 @@
         justify-content:end;
         padding: 2rem;
         padding-top: 10rem;
-
+        z-index: 10000000;
 
 }
 .modal-wpp{

@@ -7,8 +7,25 @@ import './TitleHome.css';
 
 export default function TitleHome() {
     const [publicaciones, setPublicacions] = useState([]);
+    const [visitas, setVisitas] = useState([]);
+
     const contacto = contact[0];
 
+    useEffect(() => {
+        cargarVistas();
+    }, []);
+
+    const cargarVistas = () => {
+        fetch(`${baseURL}/visitas.php`, {
+            method: 'GET',
+        })
+            .then(response => response.json())
+            .then(data => {
+
+                setVisitas(data);
+            })
+            .catch(error => console.error('Error al cargar visitas:', error));
+    };
     useEffect(() => {
         cargarPublicaciones();
     }, []);
@@ -45,7 +62,7 @@ export default function TitleHome() {
             <img src={logo} alt={alt} />
             <h2>{contacto?.nombre}</h2>
             <p>El portal más grande de clasificados porno</p>
-            <span><strong>{publicaciones?.length}</strong> anuncios con <strong>{totalImagenes?.toLocaleString()}</strong> fotos verificadas</span>
+            <span><strong>{publicaciones?.length}</strong> anuncios con <strong>{totalImagenes?.toLocaleString()}</strong> fotos verificadas  y <strong>{visitas?.length}</strong>  visitas </span>
             <hr />
         </div>
     );
