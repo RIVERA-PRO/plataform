@@ -4,7 +4,7 @@ const contact = [
     {
         nombre: 'Mamis Vip México',
         telefono: 54387583101,
-        email: 'mamisvipgmail.com',
+        email: 'contacto@mamisvip.com',
         direccion: 'Mexico',
         ceo: 'Eduardo',
         dominio: 'www.mamisvip.com',

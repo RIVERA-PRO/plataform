@@ -10,12 +10,10 @@ import Nosotros from '../../Components/InfoWeb/Nosotros';
 import { Link as Anchor, useLocation } from 'react-router-dom';
 import links from '../../Components/links';
 import link from '../../Components/link';
-import TitleSection from '../../Components/TitleSection/TitleSection'
-import logo from '../../images/logo.png'
-import contact from "../../Components/contact";
+import About from '../../Components/About/About'
+import ShareWeb from '../../Components/ShareWeb/ShareWeb'
 export default function PagesInfo() {
     const location = useLocation(); // Obtiene la URL actual
-    const contacto = contact[0]
     return (
         <div>
             <BgPageSection />
@@ -48,7 +46,8 @@ export default function PagesInfo() {
                 <CardsSection />
             </div>
 
-            <TitleSection title={contacto?.nombre} description={contacto?.nosotros} logo={logo} />
+            <About />
+            <ShareWeb />
         </div>
     );
 }

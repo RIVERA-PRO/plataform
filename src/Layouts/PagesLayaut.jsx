@@ -4,6 +4,8 @@ import { Outlet } from 'react-router-dom';
 import { useMediaQuery } from '@react-hook/media-query';
 import Footer from '../Components/Footer/Footer'
 import ModalCokies from '../Components/ModalCokies/ModalCokies';
+import ButonScroll from '../Components/ButonScroll/ButonScroll';
+import BtnWhatsapp from '../Components/BtnWhatsapp/BtnWhatsapp'
 export default function IndexLayout() {
 
 
@@ -15,9 +17,10 @@ export default function IndexLayout() {
                     <Nabvar />
                     <Outlet />
                     <Footer />
+                    <ButonScroll />
+                    <BtnWhatsapp />
                 </> :
                 <>
-
                     <Outlet />
                     <Footer />
                 </>}

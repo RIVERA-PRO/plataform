@@ -1,15 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import logo from '../../images/logo.png';
 import baseURL from '../url';
-import alt from '../alt';
-import contact from '../contact';
 import './TitleHome.css';
 
 export default function TitleHome() {
     const [publicaciones, setPublicacions] = useState([]);
     const [visitas, setVisitas] = useState([]);
 
-    const contacto = contact[0];
 
     useEffect(() => {
         cargarVistas();
@@ -59,8 +56,8 @@ export default function TitleHome() {
 
     return (
         <div className='TitleHome'>
-            <img src={logo} alt={alt} />
-            <h2>{contacto?.nombre}</h2>
+            <img src={logo} alt='Mamis Vip México' />
+            <h2>Mamis Vip México</h2>
             <p>El portal más grande de clasificados porno</p>
             <span><strong>{publicaciones?.length}</strong> anuncios con <strong>{totalImagenes?.toLocaleString()}</strong> fotos verificadas  y <strong>{visitas?.length}</strong>  visitas </span>
             <hr />

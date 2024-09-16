@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: *'); // Permitir solicitudes desde cualquier origen (no seguro para producción)
+ // header('Access-Control-Allow-Origin: *'); Permitir solicitudes desde cualquier origen (no seguro para producción)
 
 require __DIR__.'/vendor/autoload.php';
 use Dotenv\Dotenv;

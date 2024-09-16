@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './CardsCantidad.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faBook, faImage, faAddressBook, faTachometerAlt, faCode, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBook, faImage, faStar, faTachometerAlt, faCode, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { Link as Anchor } from "react-router-dom";
 import baseURL from '../../url';
 export default function CardsCantidad() {
@@ -104,7 +104,7 @@ export default function CardsCantidad() {
 
             </Anchor>
             <Anchor to={`/dashboard/categorias`} className='cardCantidad' >
-                <FontAwesomeIcon icon={faTachometerAlt} className='icons' />
+                <FontAwesomeIcon icon={faStar} className='icons' />
                 <div className='deColumn'>
 
                     <h3>Categorias</h3>

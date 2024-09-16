@@ -77,7 +77,7 @@ export default function BannersModal() {
                 ) : (
                     publicacion && (
                         <div className='banner-dev-modal'>
-                            <img src={publicacion?.imagen1 || publicacion?.imagen2 || publicacion?.imagen3 || publicacion?.imagen4} alt={`publicacion-${publicacion.titulo} - ${alt}`} />
+                            <img src={publicacion?.imagen1 || publicacion?.imagen2 || publicacion?.imagen3 || publicacion?.imagen4} alt={`publicacion-${publicacion.titulo} - Mamis Vip México`} />
                             <div className='product-slide-text'>
 
                                 <div className='deColumnlide'>

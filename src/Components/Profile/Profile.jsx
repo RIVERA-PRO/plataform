@@ -3,6 +3,7 @@ import logo from '../../images/logo.png'
 import './Profile.css'
 import { Link as Anchor } from 'react-router-dom';
 import baseURL from '../url';
+import ShareWeb from '../ShareWeb/ShareWeb';
 export default function Profile() {
     const [contactos, setContactos] = useState([]);
 
@@ -60,7 +61,7 @@ export default function Profile() {
                 <Anchor to={`mailto:${contactos.email}`} target="_blank">{contactos.email}</Anchor>
                 <Anchor to={`https://www.google.com/maps?q=${encodeURIComponent(contactos.direccion)}`} target="_blank">{contactos.direccion}</Anchor>
 
-
+                <ShareWeb />
             </div>
 
         </div>

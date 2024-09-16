@@ -156,9 +156,14 @@ export default function PublicacionesFilter() {
                 {filteredPublicaciones?.length > 0 ? (
                     filteredPublicaciones?.map(publicacion => (
                         <Anchor className="cardPublic" key={publicacion?.idPublicacion} to={`/${link}/${removeAccents(categorias?.find(cat => cat?.idCategoria === publicacion?.idCategoria)?.categoria || '').replace(/\s+/g, '-')}/${removeAccents(publicacion?.estado).replace(/\s+/g, '-')}/${publicacion?.idPublicacion}/${removeAccents(publicacion?.titulo || '').replace(/\s+/g, '-')}`}>
-                            <img src={obtenerImagen(publicacion)} alt={`${publicacion?.titulo} - ${alt}`} />
+                            <img src={obtenerImagen(publicacion)} alt={`${publicacion?.titulo} - Mamis Vip México`} />
                             <div className='cardText'>
-                                <h4>{publicacion?.titulo}</h4>
+
+                                {isScreenLarge ? (
+                                    <h4>{publicacion?.titulo?.slice(0, 100)}</h4>
+                                ) : (
+                                    <h4>{publicacion?.titulo?.slice(0, 30)}</h4>
+                                )}
                                 {isScreenLarge ? (
                                     <span>{publicacion?.descripcion?.slice(0, 100)}</span>
                                 ) : (

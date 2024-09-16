@@ -63,11 +63,33 @@ export default function PublicacionesHome() {
         })
             .then(response => response.json())
             .then(data => {
-                setPublicacions(data.publicaciones);
+                const publicacionesPorCategoria = data?.publicaciones?.reduce((acc, publicacion) => {
+                    const { idCategoria } = publicacion;
+                    if (!acc[idCategoria]) {
+                        acc[idCategoria] = [];
+                    }
+                    acc[idCategoria].push(publicacion);
+                    return acc;
+                }, {});
+
+                let publicacionesSeleccionadas = [];
+
+                Object.keys(publicacionesPorCategoria).forEach((idCategoria) => {
+                    const publicacionesDeCategoria = publicacionesPorCategoria[idCategoria];
+                    // Ordenar aleatoriamente las publicaciones de esta categoría y tomar hasta 10
+                    const publicacionesAleatorias = publicacionesDeCategoria.sort(() => Math.random() - 0.5).slice(0, 10);
+                    publicacionesSeleccionadas = [...publicacionesSeleccionadas, ...publicacionesAleatorias];
+                });
+
+                // Ordenar aleatoriamente todas las publicaciones seleccionadas y tomar un máximo de 35
+                publicacionesSeleccionadas = publicacionesSeleccionadas.sort(() => Math.random() - 0.5).slice(0, 35);
+
+                setPublicacions(publicacionesSeleccionadas);
                 setLoading(false);
             })
             .catch(error => console.error('Error al cargar publicaciones:', error));
     };
+
 
     const cargarCategorias = () => {
         fetch(`${baseURL}/categoriasGet.php`, {
@@ -143,10 +165,10 @@ export default function PublicacionesHome() {
                                         id='swiper_container_products'
                                         autoplay={{ delay: 3000 }}
                                     >
-                                        {publicaciones?.filter(item => item.recomendado === "si").map(item => (
+                                        {publicaciones?.slice(0, 15)?.filter(item => item.recomendado === "si").map(item => (
                                             <SwiperSlide key={item.idPublicacion} id='SwiperSlide-scroll-products-masvendidos'>
                                                 <Anchor className='cardProdcutmasVendido' to={`/${link}/${removeAccents(categorias.find(cat => cat.idCategoria === item.idCategoria)?.categoria || '').replace(/\s+/g, '-')}/${removeAccents(item?.estado || '').replace(/\s+/g, '-')}/${item.idPublicacion}/${removeAccents(item.titulo || '').replace(/\s+/g, '-')}`}>
-                                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - ${alt}`} />
+                                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - Mamis Vip México`} />
                                                     <h6 className='recomendado'>Recomendado</h6>
                                                     <div className='cardText'>
                                                         <h4>{item.titulo}</h4>
@@ -183,7 +205,7 @@ export default function PublicacionesHome() {
                                         {publicaciones?.filter(item => item.idCategoria === idCategoria).map(item => (
                                             <SwiperSlide id='SwiperSlide-scroll-products' key={item.idPublicacion}>
                                                 <Anchor className='cardProdcutSelected' key={item.idPublicacion} to={`/${link}/${removeAccents(categoria || '').replace(/\s+/g, '-')}/${removeAccents(item?.estado || '').replace(/\s+/g, '-')}/${item.idPublicacion}/${removeAccents(item.titulo || '').replace(/\s+/g, '-')}`}>
-                                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - ${alt}`} />
+                                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - Mamis Vip México`} />
                                                     <div className='cardTextSelected'>
                                                         <h4>{item.titulo}</h4>
                                                         {isScreenLarge ? (
@@ -208,7 +230,7 @@ export default function PublicacionesHome() {
                             ?.filter(item => categoriaSeleccionada !== 'Todo' && item.idCategoria === categoriaSeleccionada)
                             ?.map(item => (
                                 <Anchor key={item?.idPublicacion} to={`/${link}/${removeAccents(categorias?.find(cat => cat?.idCategoria === categoriaSeleccionada)?.categoria || '').replace(/\s+/g, '-')}/${removeAccents(item?.estado || '').replace(/\s+/g, '-')}/${item.idPublicacion}/${removeAccents(item.titulo || '').replace(/\s+/g, '-')}`} className='cardProdcutSelected'>
-                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - ${alt}`} />
+                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - Mamis Vip México`} />
                                     <div className='cardTextSelected'>
                                         <h4>{item.titulo}</h4>
                                         {isScreenLarge ? (

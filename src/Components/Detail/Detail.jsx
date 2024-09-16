@@ -18,6 +18,7 @@ import link from '../link';
 import { useMediaQuery } from '@react-hook/media-query';
 import PalabrasClave from '../PalabrasClave/PalabrasClave'
 import Visitas from '../Visitas/Visitas'
+import ShareWeb from '../ShareWeb/ShareWeb'
 export default function Detail() {
     const navigate = useNavigate();
     const swiperRef = useRef(null);
@@ -100,7 +101,7 @@ export default function Detail() {
         if (navigator.share) {
             navigator.share({
                 title: document.title,
-                text: `Echa un vistazo a esta publicacion de ${alt}`,
+                text: `Echa un vistazo a esta publicacion de Mamis Vip México`,
                 url: window.location.href,
             })
                 .then(() => console.log('Contenido compartido correctamente'))
@@ -170,7 +171,7 @@ export default function Detail() {
 
         const tituloSinAcentos = removeAccents(publicacion.titulo);
 
-        const message = `Hola 🤝, he visto tu anuncio \n\n✅${tituloSinAcentos} en:\n     *${alt}*: \n\n✅ ${currentUrl} \n\n y quisiera saber más información... 😊 gracias! `;
+        const message = `Hola 🤝, he visto tu anuncio \n\n✅${tituloSinAcentos} en:\n     *Mamis Vip México*: \n\n✅ ${currentUrl} \n\n y quisiera saber más información... 😊 gracias! `;
         const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
     };
@@ -384,7 +385,7 @@ export default function Detail() {
                 {publicaciones?.slice(0, 10)?.map(item => (
                     <SwiperSlide key={item.idPublicacion} id='SwiperSlide-scroll-products-masvendidos'>
                         <a class='cardProdcutmasVendido' href={`/${link}/${removeAccents(categorias.find(cat => cat.idCategoria === item.idCategoria)?.categoria?.replace(/\s+/g, '-') || '')}/${removeAccents(item.estado.replace(/\s+/g, '-'))}/${item.idPublicacion}/${removeAccents(item.titulo.replace(/\s+/g, '-'))}`}>
-                            <img src={obtenerImagen(item)} alt={`${item?.titulo} - ${alt}`} />
+                            <img src={obtenerImagen(item)} alt={`${item?.titulo} - Mamis Vip México`} />
                             <h6 className='recomendado'>Recomendado</h6>
                             <div className='cardText'>
                                 <h4>{item.titulo}</h4>
@@ -403,6 +404,7 @@ export default function Detail() {
             </Swiper>
             <Visitas />
             <PalabrasClave />
+            <ShareWeb />
         </div >
 
     )

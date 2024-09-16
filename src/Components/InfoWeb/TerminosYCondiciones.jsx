@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import alt from "../alt";
 import contact from "../contact";
 import './PoliticaYPrivacidad.css'
 
@@ -12,7 +11,7 @@ export default function TerminosYCondiciones() {
 
             <div className="sectionInfo">
                 <h1> {info?.replace(/-/g, ' ')}</h1>
-                <p>Al usar esta APLICACIÓN WEB <strong>{alt}</strong> aceptas los siguientes <strong>{info?.replace(/-/g, ' ')}</strong>, por lo que te pedimos leerla.</p>
+                <p>Al usar esta APLICACIÓN WEB <strong> Mamis Vip México</strong> aceptas los siguientes <strong>{info?.replace(/-/g, ' ')}</strong>, por lo que te pedimos leerla.</p>
 
                 <ol>
                     <li>Titularidad de la plataforma</li>
@@ -25,7 +24,7 @@ export default function TerminosYCondiciones() {
             <hr />
             <div className="sectionInfo">
                 <h3>  <span>1)</span> Titularidad de la plataforma</h3>
-                <p><strong>{alt}</strong> con razón social de nacionalidad mexicana Servicios de Internet S.A. de C.V., con domicilio en <strong>{contacto?.direccion}</strong> y correo electrónico <strong>{contacto?.email}</strong> se declara propietaria de:</p>
+                <p><strong> Mamis Vip México</strong> con razón social de nacionalidad mexicana Servicios de Internet S.A. de C.V., con domicilio en <strong>{contacto?.direccion}</strong> y correo electrónico <strong>{contacto?.email}</strong> se declara propietaria de:</p>
                 <ul>
                     <li>El dominio <strong>{contacto?.dominio}</strong></li>
                     <li>Los cerificados de seguridad SSL.</li>
@@ -37,7 +36,7 @@ export default function TerminosYCondiciones() {
             <hr />
             <div className="sectionInfo">
                 <h3>  <span> 2) </span>Aceptación de las condiciones de uso</h3>
-                <p>La APLICACIÓN WEB <strong>{alt}</strong> es titularidad de la empresa citada en el punto uno de este documento, en adelante el <strong>PROVEEDOR DE SERVICIOS</strong>.</p>
+                <p>La APLICACIÓN WEB <strong> Mamis Vip México</strong> es titularidad de la empresa citada en el punto uno de este documento, en adelante el <strong>PROVEEDOR DE SERVICIOS</strong>.</p>
                 <p>El <strong>PROVEEDOR DE SERVICIOS</strong> no interviene en la voluntad de creación de ningún anuncio clasificado, éstos anuncios son creados por los ANUNCIANTES, el <strong>PROVEEDOR DE SERVICIOS</strong> los hospeda.</p>
                 <p>El uso de la <strong>APLICACIÓN WEB</strong> asigna la condición de ANUNCIANTE a toda aquella persona que por voluntad propia decide crear un anuncio clasificado porno y conlleva la aceptación irrevocable de todos los puntos descritos en este <strong>AVISO LEGAL</strong>.</p>
                 <p>El <strong>PROVEEDOR DE SERVICIOS</strong> se reserva el derecho de agregar o modificar los puntos de uso de la <strong>APLICACIÓN WEB</strong> sin previo aviso, por lo cual es obligación del <strong>ANUNCIANTE</strong> leerlas de manera periódica.</p>

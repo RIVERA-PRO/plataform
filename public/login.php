@@ -36,8 +36,8 @@ try {
             $contrasenaHash = $row['contrasena'];
 
             if (password_verify($contrasenaLogin, $contrasenaHash)) {
-                // Iniciar sesión si el rol es 'admin' o 'usuario_tienda'
-                if ($row['rol'] == 'admin' || $row['rol'] == 'usuario_tienda') {
+                // Iniciar sesión si el rol es 'admin' o 'usuario_admin'
+                if ($row['rol'] == 'admin' || $row['rol'] == 'usuario_admin') {
                     session_start();
                     $_SESSION['usuario_id'] = $row['idUsuario'];
                     $_SESSION['rol'] = $row['rol'];
@@ -51,7 +51,7 @@ try {
 
                     if ($row['rol'] == 'admin') {
                         echo json_encode(["mensaje" => "Inicio de sesión exitoso como administrador", "redirect" => "dashboard.php", "usuario" => $usuario]);
-                    } elseif ($row['rol'] == 'usuario_tienda') {
+                    } elseif ($row['rol'] == 'usuario_admin') {
                         echo json_encode(["mensaje" => "Inicio de sesión exitoso como usuario tienda", "redirect" => "tienda_dashboard.php", "usuario" => $usuario]);
                     }
                 } else {

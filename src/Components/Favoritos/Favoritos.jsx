@@ -107,7 +107,7 @@ export default function Favoritos() {
                                     return (
                                         <div key={publicaci.idPublicacion} className='cardProductCart' >
                                             <Anchor to={`/${link}/${removeAccents(categorias.find(cat => cat.idCategoria === publicaci.idCategoria)?.categoria || '').replace(/\s+/g, '-')}/${removeAccents(publicaci?.estado || '').replace(/\s+/g, '-')}/${publicaci?.idPublicacion}/${removeAccents(publicaci?.titulo || '').replace(/\s+/g, '-')}`} onClick={closeModal} >
-                                                <img src={obtenerImagen(publicaci)} alt={`${publicaci?.titulo} - ${alt}`} />
+                                                <img src={obtenerImagen(publicaci)} alt={`${publicaci?.titulo} - Mamis Vip México`} />
                                             </Anchor>
                                             <div className='cardProductCartText'>
                                                 <h3>{publicaci.titulo}</h3>

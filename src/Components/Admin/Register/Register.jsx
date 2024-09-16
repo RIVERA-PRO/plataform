@@ -114,7 +114,7 @@ export default function Register() {
                                     >
                                         <option value="">Seleccione un rol</option>
                                         <option value="usuario">Usuario</option>
-                                        <option value="usuario_tienda">Usuario_Tienda</option>
+                                        <option value="usuario_admin">Usuario Admin</option>
                                         <option value="admin">Admin</option>
                                     </select>
                                 </fieldset>

@@ -59,6 +59,13 @@
     border-bottom: 1px solid var(--gris2);
     padding-bottom: 10px;
 }
+.profileContain .shareButonsContain{
+   
+    margin:0;
+    background-color: var(--blanco);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0);
+    padding: 0;
+}
 @media (max-width: 700px) {
     
     .profileContain img{

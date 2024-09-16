@@ -112,7 +112,7 @@ export default function CardsSection() {
                                     key={item.idPublicacion}
                                     to={`/${link}/${removeAccents(categorias.find(cat => cat.idCategoria === item.idCategoria)?.categoria || '').replace(/\s+/g, '-')}/${removeAccents(item.estado || '').replace(/\s+/g, '-')}/${item.idPublicacion}/${removeAccents(item.titulo || '').replace(/\s+/g, '-')}`}
                                 >
-                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - ${alt}`} />
+                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - Mamis Vip México`} />
                                     <h6 className='recomendado'>Recomendado</h6>
                                     <div className='cardText'>
                                         <h4>{item.titulo}</h4>
@@ -136,7 +136,7 @@ export default function CardsSection() {
                                     key={item.idPublicacion}
                                     to={`/${link}/${removeAccents(categorias.find(cat => cat.idCategoria === item.idCategoria)?.categoria || '').replace(/\s+/g, '-')}/${removeAccents(item.estado || '').replace(/\s+/g, '-')}/${item.idPublicacion}/${removeAccents(item.titulo || '').replace(/\s+/g, '-')}`}
                                 >
-                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - ${alt}`} />
+                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - Mamis Vip México`} />
                                 </Anchor>
                             ))}
                         </div>

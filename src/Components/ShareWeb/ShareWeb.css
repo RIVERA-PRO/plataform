@@ -1,0 +1,64 @@
+.shareButonsContain{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 10px 30% 2rem;
+    background-color: var(--blanco);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.073);
+    padding: 20px;
+}
+.shareButonsContain button{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+}
+.social-buttons{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+.share-button{
+    background-color:  var(--color1);
+    color: var(--blanco);
+}
+
+.whatsapp-button-w{
+    background-color: rgb(30, 184, 30);
+    color: var(--blanco)!important;
+    padding: 7px 20px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    text-align: center;
+}
+.twitter-button-t{
+    background-color: rgb(30, 110, 184);
+    color: var(--blanco)!important;
+    padding: 7px 20px;
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    text-align: center;
+}
+
+@media (max-width: 900px) {
+    .whatsapp-button-w{
+        padding: 7px 10px;
+        font-size: 14px;
+    }
+    .twitter-button-t{
+        padding: 7px 10px;
+        font-size: 14px;
+    }
+
+    .shareButonsContain{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 10px 3% 2rem;
+        background-color: var(--blanco);
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.073);
+        padding: 20px;
+    }
+}

@@ -72,7 +72,7 @@ export default function UsuariosData() {
             input: 'select',
             inputOptions: {
                 'usuario': 'usuario',
-                'usuario_tienda': 'Usuario Tienda',
+                'usuario_admin': 'Usuario Admin',
                 'admin': 'Admin'
             },
             inputValue: rolActual,
@@ -232,7 +232,7 @@ export default function UsuariosData() {
                                 <td>{usuario.nombre}</td>
                                 <td>{usuario.email}</td>
                                 <td style={{
-                                    color: usuario?.rol === 'usuario_tienda' ? '#DAA520' : usuario?.rol === 'admin' ? '#008000' : '#FF0000',
+                                    color: usuario?.rol === 'usuario_admin' ? '#DAA520' : usuario?.rol === 'admin' ? '#008000' : '#FF0000',
 
                                 }}>  {`${usuario?.rol}`}</td>
                                 <td>{usuario.createdAt}</td>
