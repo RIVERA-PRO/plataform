@@ -18,7 +18,13 @@
 @media (max-width: 900px) {
     .Visitas{
         margin: 20px 4%;
-      
+       text-align: center;
        
+    }
+    .Visitas span{
+        font-size: 13px;
+    }
+    .Visitas strong{
+        font-size: 13px;
     }
 }

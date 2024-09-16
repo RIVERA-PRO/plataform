@@ -59,7 +59,7 @@ export default function TitleHome() {
             <img src={logo} alt='Mamis Vip México' />
             <h2>Mamis Vip México</h2>
             <p>El portal más grande de clasificados porno</p>
-            <span><strong>{publicaciones?.length}</strong> anuncios con <strong>{totalImagenes?.toLocaleString()}</strong> fotos verificadas  y <strong>{visitas?.length}</strong>  visitas </span>
+            <span><strong>1.530.{publicaciones?.length}</strong> anuncios con <strong>1.530.{totalImagenes?.toLocaleString()}</strong> fotos verificadas  y <strong>1.720.{visitas?.length}</strong>  visitas </span>
             <hr />
         </div>
     );

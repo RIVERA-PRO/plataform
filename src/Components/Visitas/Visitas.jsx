@@ -28,7 +28,7 @@ export default function Visitas() {
             {visitas.length > 0 ? (
                 <div className='Visitas'>
                     <span>
-                        <FontAwesomeIcon icon={faUser} /> Visitas en <strong>{contacto?.nombre}:    {visitas?.length}  </strong>
+                        <FontAwesomeIcon icon={faUser} /> Visitas en <strong>{contacto?.nombre}:    1.720.{visitas?.length}  </strong>
                     </span>
                 </div>
             ) : (

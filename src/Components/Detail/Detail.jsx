@@ -19,6 +19,7 @@ import { useMediaQuery } from '@react-hook/media-query';
 import PalabrasClave from '../PalabrasClave/PalabrasClave'
 import Visitas from '../Visitas/Visitas'
 import ShareWeb from '../ShareWeb/ShareWeb'
+import UserOnline from '../UserOnline/UserOnline'
 export default function Detail() {
     const navigate = useNavigate();
     const swiperRef = useRef(null);
@@ -368,13 +369,13 @@ export default function Detail() {
                 <p>{publicacion.descripcion}</p>
 
             </div>
+            <UserOnline />
 
             <div className='deFlexTitlesection'>
                 <h3>   <FontAwesomeIcon icon={faStar} /> Podría interesarte</h3>
                 <hr />
                 <FontAwesomeIcon icon={faAngleDoubleRight} className='iconSection' />
             </div>
-
             <Swiper
                 effect={'coverflow'}
                 grabCursor={true}

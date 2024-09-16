@@ -167,7 +167,7 @@ export default function PublicacionesData() {
 
     const descargarExcel = () => {
         const data = Filtrados.map(item => ({
-            idPublicacion: item.idPublicacion,
+            id: item.idPublicacion,
             Titulo: item.titulo,
             // Descripcion: item.descripcion,
             // Categoria: item.categoria,
@@ -189,7 +189,7 @@ export default function PublicacionesData() {
         pdf.text('Lista de Publicaciones', 10, 10);
 
         const columns = [
-            { title: 'idPublicacion', dataKey: 'idPublicacion' },
+            { title: 'id', dataKey: 'idPublicacion' },
             { title: 'Titulo', dataKey: 'titulo' },
             // { title: 'Descripcion', dataKey: 'descripcion' },
             // { title: 'Categoria', dataKey: 'categoria' },
@@ -200,10 +200,9 @@ export default function PublicacionesData() {
         ];
 
         const data = Filtrados.map(item => ({
-            idPublicacion: item.idPublicacion,
+            id: item.idPublicacion,
             Titulo: item.titulo,
             // Descripcion: item.descripcion,
-            Categoria: item.categoria,
             Estado: item.estado,
             Municipio: item.municipio,
             Telefono: item.telefono,

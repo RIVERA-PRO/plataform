@@ -18,6 +18,7 @@ export default function TerminosYCondiciones() {
                     <li>Aceptación de las condiciones de uso</li>
                     <li>Mayoría de edad</li>
                     <li>Definición de servicio de la aplicación web</li>
+                    <li>Condiciones generales sobre ANUNCIANTES</li>
                     <li>Marco Legal</li>
                 </ol>
             </div>

@@ -37,7 +37,7 @@ try {
 
             if (password_verify($contrasenaLogin, $contrasenaHash)) {
                 // Iniciar sesión si el rol es 'admin' o 'usuario_admin'
-                if ($row['rol'] == 'admin' || $row['rol'] == 'usuario_admin') {
+                if ($row['rol'] == 'admin' ) {
                     session_start();
                     $_SESSION['usuario_id'] = $row['idUsuario'];
                     $_SESSION['rol'] = $row['rol'];
@@ -52,7 +52,7 @@ try {
                     if ($row['rol'] == 'admin') {
                         echo json_encode(["mensaje" => "Inicio de sesión exitoso como administrador", "redirect" => "dashboard.php", "usuario" => $usuario]);
                     } elseif ($row['rol'] == 'usuario_admin') {
-                        echo json_encode(["mensaje" => "Inicio de sesión exitoso como usuario tienda", "redirect" => "tienda_dashboard.php", "usuario" => $usuario]);
+                        echo json_encode(["mensaje" => "Inicio de sesión exitoso como usuario admin", "redirect" => "tienda_dashboard.php", "usuario" => $usuario]);
                     }
                 } else {
                     echo json_encode(["error" => "No tienes permisos para acceder"]);

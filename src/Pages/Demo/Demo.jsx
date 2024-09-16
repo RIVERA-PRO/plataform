@@ -15,6 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons';
 import Visitas from '../../Components/Visitas/Visitas'
 import ShareWeb from '../../Components/ShareWeb/ShareWeb'
+import UserOnline from '../../Components/UserOnline/UserOnline'
 export default function Demo() {
     return (
         <section className='demo'>
@@ -25,6 +26,7 @@ export default function Demo() {
 
             <CategoriSection />
             <PublicacionesHome />
+            <UserOnline />
             <BtnWhatsapp />
             <BgSection />
             <Visitas />
