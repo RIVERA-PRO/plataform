@@ -29,22 +29,22 @@ try {
     $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-        $idPublicacion = isset($_GET['idPublicacion']) ? $_GET['idPublicacion'] : null;
+        // Eliminar todas las publicaciones de la base de datos
+        $sqlDeleteAll = "DELETE FROM publicaciones";
+        $sentenciaDeleteAll = $conexion->prepare($sqlDeleteAll);
 
-        if (!$idPublicacion) {
-            echo json_encode(["error" => "Se requiere proporcionar un ID de publicación para eliminarla."]);
-            exit;
-        }
+        if ($sentenciaDeleteAll->execute()) {
+            // Reiniciar el autoincremento del ID
+            $sqlResetAutoIncrement = "ALTER TABLE publicaciones AUTO_INCREMENT = 1";
+            $sentenciaResetAutoIncrement = $conexion->prepare($sqlResetAutoIncrement);
 
-        // Eliminar la publicación de la base de datos
-        $sqlDelete = "DELETE FROM publicaciones WHERE idPublicacion = :idPublicacion";
-        $sentenciaDelete = $conexion->prepare($sqlDelete);
-        $sentenciaDelete->bindParam(':idPublicacion', $idPublicacion, PDO::PARAM_INT);
-
-        if ($sentenciaDelete->execute()) {
-            echo json_encode(["mensaje" => "Publicación eliminada correctamente"]);
+            if ($sentenciaResetAutoIncrement->execute()) {
+                echo json_encode(["mensaje" => "Todas las publicaciones han sido eliminadas y el ID reiniciado a 1"]);
+            } else {
+                echo json_encode(["error" => "Error al reiniciar el autoincremento del ID"]);
+            }
         } else {
-            echo json_encode(["error" => "Error al eliminar la publicación"]);
+            echo json_encode(["error" => "Error al eliminar las publicaciones"]);
         }
 
         exit;

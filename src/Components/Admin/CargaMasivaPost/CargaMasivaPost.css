@@ -1,0 +1,15 @@
+.agregar{
+    background-color: var(--color1)!important;
+    padding: 10px;
+    color: var(--blanco)!important;
+    border-radius: 10px;
+    border: none;
+}
+
+.elimin{
+    background-color: red;
+    padding: 3px 10px;
+    color: var(--blanco);
+    border-radius: 3px;
+    border: none;
+}

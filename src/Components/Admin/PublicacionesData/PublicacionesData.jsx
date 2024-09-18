@@ -14,6 +14,7 @@ import './PublicacionesData.css'
 import estadosYmunicipios from '../../estadosYmunicipios';
 import link from '../../link';
 import palabrasClave from '../../palabrasClave';
+import CargaMasivaPost from '../CargaMasivaPost/CargaMasivaPost';
 import SwiperCore, { Navigation, Pagination, Autoplay } from 'swiper/core';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
@@ -33,6 +34,7 @@ export default function PublicacionesData() {
     const [filtroEstados, setFiltrEstados] = useState('');
     const [filtroRecomendado, setFiltroRecomendado] = useState('');
     const [filtroCategoria, setFiltroCategoria] = useState('');
+    const [filtroTelefono, setFiltroTelefono] = useState('');
     const [ordenInvertido, setOrdenInvertido] = useState(false);
     const [imagenPreview, setImagenPreview] = useState(null);
     const [imagenPreview2, setImagenPreview2] = useState(null);
@@ -166,7 +168,8 @@ export default function PublicacionesData() {
         const estadoMatch = item.estado?.toString().includes(filtroEstados);
         const recomendadoMatch = item.recomendado?.toString().includes(filtroRecomendado);
         const tituloMatch = !filtroTitulo || item.titulo?.includes(filtroTitulo);
-        return idMatch && tituloMatch && categoriaMatch && recomendadoMatch && vistaMatch && estadoMatch;
+        const telfonoMatch = item.telefono?.toString().includes(filtroTelefono);
+        return idMatch && tituloMatch && categoriaMatch && recomendadoMatch && vistaMatch && estadoMatch && telfonoMatch;
     });
 
     const descargarExcel = () => {
@@ -349,6 +352,43 @@ export default function PublicacionesData() {
     const handleSectionChange = (section) => {
         setSelectedSection(section);
     };
+    const eliminarTodo = async () => {
+        // Mostrar la alerta de confirmación
+        const result = await Swal.fire({
+            title: '¿Estás seguro?',
+            text: 'Esta acción eliminará todas las publicaciones. ¡Esta acción no se puede deshacer!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        });
+
+        // Si el usuario confirma la acción
+        if (result.isConfirmed) {
+            try {
+                const response = await fetch(`${baseURL}/allDelete.php`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    toast.success(data.mensaje || 'Todas las publicaciones han sido eliminadas');
+                    window.location.reload();
+                } else {
+                    toast.error(data.error || 'Error al eliminar las publicaciones');
+                }
+            } catch (error) {
+                console.error('Error al eliminar publicaciones:', error);
+                toast.error('Error de conexión. Por favor, inténtelo de nuevo.');
+            }
+        }
+    };
 
     const removeAccents = (str) => {
         if (!str) return ''; // Maneja casos en los que str sea undefined o null
@@ -362,10 +402,14 @@ export default function PublicacionesData() {
 
             <ToastContainer />
 
-            <div className='deFlexContent'>
+            <div className='deFlexContent2'>
 
                 <div className='deFlex2'>
                     <NewPublicacion />
+                    <CargaMasivaPost />
+                    <button onClick={eliminarTodo} className='btnSave'>
+                        <FontAwesomeIcon icon={faTrash} /> Eliminar
+                    </button>
                     <button className='excel' onClick={descargarExcel}><FontAwesomeIcon icon={faArrowDown} /> Excel</button>
                     <button className='pdf' onClick={descargarPDF}><FontAwesomeIcon icon={faArrowDown} /> PDF</button>
                 </div>
@@ -376,7 +420,9 @@ export default function PublicacionesData() {
                     <div className='inputsColumn'>
                         <input type="number" value={filtroId} onChange={(e) => setFiltroId(e.target.value)} placeholder='Id' />
                     </div>
-
+                    <div className='inputsColumn'>
+                        <input type="number" value={filtroTelefono} onChange={(e) => setFiltroTelefono(e.target.value)} placeholder='Telefono' />
+                    </div>
                     <div className='inputsColumn'>
                         <input type="text" value={filtroTitulo} onChange={(e) => setFiltroTitulo(e.target.value)} placeholder='Titulo' />
                     </div>
@@ -735,7 +781,7 @@ export default function PublicacionesData() {
             </div>
 
             {Filtrados?.length > visibleCount && (
-                <button onClick={handleShowMore} className="show-more-btn">
+                <button onClick={handleShowMore} id="show-more-btn">
                     Mostrar  más </button>
             )}
         </div>
