@@ -77,7 +77,7 @@ export default function CardsSection() {
         <div>
             <div className='cardProfile'>
                 <img src={logo} alt={alt} />
-                <h2>{contactos.nombre}</h2>
+                <h2>Mamis Vip México</h2>
 
                 <Anchor to={`mailto:${contactos.email}`} target="_blank">{contactos.email}</Anchor>
                 <Anchor to={`https://www.google.com/maps?q=${encodeURIComponent(contactos.direccion)}`} target="_blank">{contactos.direccion}</Anchor>

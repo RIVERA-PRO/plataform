@@ -122,7 +122,7 @@ export default function PublicacionesCardHome() {
                         {publicaciones?.slice(0, 10)?.filter(item => item.recomendado === "si").map(item => (
                             <SwiperSlide key={item.idPublicacion} id='SwiperSlide-scroll-products-masvendidos'>
                                 <Anchor className='cardHome' to={`/${link}/${removeAccents(categorias.find(cat => cat.idCategoria === item.idCategoria)?.categoria || '').replace(/\s+/g, '-')}/${removeAccents(item?.estado || '').replace(/\s+/g, '-')}/${item.idPublicacion}/${removeAccents(item.titulo || '').replace(/\s+/g, '-')}`}>
-                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - Mamis Vip México`} />
+                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - Putas México - Mamis Vip México`} />
 
                                     {
                                         categorias

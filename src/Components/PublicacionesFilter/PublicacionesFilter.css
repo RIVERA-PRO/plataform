@@ -33,7 +33,17 @@
     border-radius: 10px;
     object-fit: cover;
 }
-
+.show-more-btn{
+    background-color: var(--color1);
+    border: none;
+    color: var(--blanco);
+    border-radius: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 15px;
+   font-size: 17px;
+}
 .cardGrap{
     display: flex;
     flex-direction: column;
@@ -75,7 +85,7 @@
     align-items: center;
     font-size: 17px;
     color: var(--text-color2);
-    padding: 2rem 0;
+    padding:  2rem 10px;
 }
 .linksSection a{
 
@@ -141,10 +151,12 @@
 .linksSection{
    overflow-x: scroll;
    width: 100%;
+   gap: 4px;
+   padding:  20px 10px;
    
 }
 .linksSection a{
-   font-size: 13px;
+   font-size: 12px;
     
  }
 }

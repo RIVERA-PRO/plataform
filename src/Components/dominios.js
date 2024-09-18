@@ -1,5 +1,6 @@
 const dominios = [
 
+    'www.putasmexico.net',
     'www.Mamisvip.com',
     'www.EscortsMamisvip.online',
     'www.Mamisvip.shop',

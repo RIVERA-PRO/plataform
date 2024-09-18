@@ -33,7 +33,7 @@ export default function PublicacionMain() {
                     throw new Error('Network response was not ok');
                 }
                 const data = await response.json();
-                setPublicaciones(data.publicaciones.reverse() || []);
+                setPublicaciones(data?.publicaciones?.reverse()?.slice(0, 10) || []);
             } catch (error) {
                 console.error('Error al cargar publicaciones:', error);
             }

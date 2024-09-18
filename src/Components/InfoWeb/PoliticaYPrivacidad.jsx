@@ -12,7 +12,7 @@ export default function PoliticaYPrivacidad() {
 
             <div className="sectionInfo">
                 <h1> {info?.replace(/-/g, ' ')}</h1>
-                <p>Al usar esta APLICACIÓN WEB <strong> Mamis Vip México</strong> aceptas la siguiente <strong>{info?.replace(/-/g, ' ')}</strong>, por lo que te pedimos leerla.</p>
+                <p>Al usar esta APLICACIÓN WEB <strong> Putas México - Mamis Vip México</strong> aceptas la siguiente <strong>{info?.replace(/-/g, ' ')}</strong>, por lo que te pedimos leerla.</p>
 
                 <ol>
                     <li>Titularidad de la plataforma</li>

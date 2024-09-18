@@ -34,6 +34,7 @@ export default function PublicacionesFilter() {
     const [loading, setLoading] = useState(true);
     const [publicaciones, setPublicacions] = useState([]);
     const [filteredPublicaciones, setFilteredPublicaciones] = useState([]);
+    const [visibleCount, setVisibleCount] = useState(20);
     const isScreenLarge = useMediaQuery('(min-width: 900px)');
 
     useEffect(() => {
@@ -68,7 +69,7 @@ export default function PublicacionesFilter() {
         })
             .then(response => response.json())
             .then(data => {
-                setPublicacions(data?.publicaciones);
+                setPublicacions(data?.publicaciones || []);
                 setLoading(false);
             })
             .catch(error => console.error('Error al cargar publicaciones:', error));
@@ -98,6 +99,10 @@ export default function PublicacionesFilter() {
         return null;
     };
 
+    const handleShowMore = () => {
+        setVisibleCount(prevCount => prevCount + 20);
+    };
+
     if (loading) {
         return <div className="cardGrapLoading">
             <div className="cardPublicLoading"></div>
@@ -113,7 +118,7 @@ export default function PublicacionesFilter() {
         <div className='PublicacionesFilter'>
             <div className="linksSection">
                 <Anchor to={'/'}>
-                    <FontAwesomeIcon icon={faHome} /> Inicio
+                    Inicio
                 </Anchor>
                 {categoria && categoria !== 'item' && (
                     <>
@@ -148,31 +153,36 @@ export default function PublicacionesFilter() {
                     </>
                 )}
                 <Anchor to={''}>
-                    ({filteredPublicaciones?.length})
+
+                    ( {String(filteredPublicaciones?.length)?.replace(/\B(?=(\d{3})+(?!\d))/g, ".")} )
                 </Anchor>
             </div>
 
             <div className="cardGrap">
                 {filteredPublicaciones?.length > 0 ? (
-                    filteredPublicaciones?.map(publicacion => (
-                        <Anchor className="cardPublic" key={publicacion?.idPublicacion} to={`/${link}/${removeAccents(categorias?.find(cat => cat?.idCategoria === publicacion?.idCategoria)?.categoria || '').replace(/\s+/g, '-')}/${removeAccents(publicacion?.estado).replace(/\s+/g, '-')}/${publicacion?.idPublicacion}/${removeAccents(publicacion?.titulo || '').replace(/\s+/g, '-')}`}>
-                            <img src={obtenerImagen(publicacion)} alt={`${publicacion?.titulo} - Mamis Vip México`} />
-                            <div className='cardText'>
-
-                                {isScreenLarge ? (
-                                    <h4>{publicacion?.titulo?.slice(0, 100)}</h4>
-                                ) : (
-                                    <h4>{publicacion?.titulo?.slice(0, 30)}</h4>
-                                )}
-                                {isScreenLarge ? (
-                                    <span>{publicacion?.descripcion?.slice(0, 100)}</span>
-                                ) : (
-                                    <span>{publicacion?.descripcion?.slice(0, 30)}</span>
-                                )}
-                                <h5> <FontAwesomeIcon icon={faMapMarkerAlt} /> {publicacion?.estado} - {publicacion?.municipio}</h5>
-                            </div>
-                        </Anchor>
-                    ))
+                    <>
+                        {filteredPublicaciones?.slice(0, visibleCount)?.map(publicacion => (
+                            <Anchor className="cardPublic" key={publicacion?.idPublicacion} to={`/${link}/${removeAccents(categorias?.find(cat => cat?.idCategoria === publicacion?.idCategoria)?.categoria || '').replace(/\s+/g, '-')}/${removeAccents(publicacion?.estado).replace(/\s+/g, '-')}/${publicacion?.idPublicacion}/${removeAccents(publicacion?.titulo || '').replace(/\s+/g, '-')}`}>
+                                <img src={obtenerImagen(publicacion)} alt={`${publicacion?.titulo} - Putas México - Mamis Vip México`} />
+                                <div className='cardText'>
+                                    {isScreenLarge ? (
+                                        <h4>{publicacion?.titulo?.slice(0, 100)}</h4>
+                                    ) : (
+                                        <h4>{publicacion?.titulo?.slice(0, 30)}</h4>
+                                    )}
+                                    {isScreenLarge ? (
+                                        <span>{publicacion?.descripcion?.slice(0, 100)}</span>
+                                    ) : (
+                                        <span>{publicacion?.descripcion?.slice(0, 30)}</span>
+                                    )}
+                                    <h5> <FontAwesomeIcon icon={faMapMarkerAlt} /> {publicacion?.estado} - {publicacion?.municipio}</h5>
+                                </div>
+                            </Anchor>
+                        ))}
+                        {filteredPublicaciones.length > visibleCount && (
+                            <button onClick={handleShowMore} className="show-more-btn">Mostrar más</button>
+                        )}
+                    </>
                 ) : (
                     <div className="noResultText">
                         <p>No hay resultados disponibles de

@@ -16,6 +16,8 @@ export default function InputSearchs() {
 
     const [productos, setProductos] = useState([]);
     const [categorias, setCategorias] = useState([]);
+    const [visibleProducts, setVisibleProducts] = useState({});
+    const [selectedCategory, setSelectedCategory] = useState(null);
 
     useEffect(() => {
         cargarProductos();
@@ -28,7 +30,7 @@ export default function InputSearchs() {
         })
             .then(response => response.json())
             .then(data => {
-                setProductos(data.publicaciones || []);
+                setProductos(data?.publicaciones || []);
             })
             .catch(error => console.error('Error al cargar productos:', error));
     };
@@ -39,7 +41,7 @@ export default function InputSearchs() {
         })
             .then(response => response.json())
             .then(data => {
-                setCategorias(data.categorias || []);
+                setCategorias(data?.categorias || []);
             })
             .catch(error => console.error('Error al cargar categorías:', error));
     };
@@ -52,21 +54,28 @@ export default function InputSearchs() {
         const searchTerm = event.target.value.toLowerCase();
         setSearchTerm(searchTerm);
 
-        const filteredResults = categorias.map((categoria) => {
-            const productosFiltrados = productos.filter((producto) => {
+        const filteredResults = categorias?.map((categoria) => {
+            const productosFiltrados = productos?.filter((producto) => {
                 return (
-                    producto.idCategoria === categoria.idCategoria &&
-                    (producto.titulo.toLowerCase().includes(searchTerm) ||
-                        categoria.categoria.toLowerCase().includes(searchTerm))
+                    producto?.idCategoria === categoria?.idCategoria &&
+                    (producto?.titulo?.toLowerCase().includes(searchTerm) ||
+                        categoria?.categoria?.toLowerCase().includes(searchTerm))
                 );
             });
 
-            return productosFiltrados.length > 0 ? { categoria, productos: productosFiltrados } : null;
-        }).filter(result => result !== null);
+            return productosFiltrados?.length > 0 ? { categoria, productos: productosFiltrados } : null;
+        })?.filter(result => result !== null);
 
         setFilteredResults(filteredResults);
         setShowResults(searchTerm !== "");
-        setNoResults(searchTerm !== "" && filteredResults.length === 0);
+        setNoResults(searchTerm !== "" && filteredResults?.length === 0);
+    };
+
+    const handleShowMore = (categoria) => {
+        setVisibleProducts(prev => ({
+            ...prev,
+            [categoria?.idCategoria]: (prev[categoria?.idCategoria] || 5) + 5
+        }));
     };
 
     const openModal = () => {
@@ -97,23 +106,26 @@ export default function InputSearchs() {
                     </fieldset>
                     {showResults && (
                         <div className="modalSearch">
-                            {filteredResults.map(({ categoria, productos }) => (
-                                <div key={categoria.idCategoria} className="sectionSearch">
-                                    <h3>{categoria.categoria}</h3>
+                            {filteredResults?.map(({ categoria, productos }) => (
+                                <div key={categoria?.idCategoria} className="sectionSearch">
+                                    <h3>{categoria?.categoria}</h3>
                                     <hr />
-                                    {productos.map((producto) => (
+                                    {productos?.slice(0, visibleProducts[categoria?.idCategoria] || 5).map((producto) => (
                                         <div key={producto.idPublicacion}>
-                                            <Link to={`/${link}/${eliminarAcentos(categoria.categoria).replace(/\s+/g, '-')}/${eliminarAcentos(producto.estado).replace(/\s+/g, '-')}/${producto.idPublicacion}/${eliminarAcentos(producto.titulo).replace(/\s+/g, '-')}`} onClick={closeModal}>
-                                                <img src={producto.imagen1} alt="" />
+                                            <Link to={`/${link}/${eliminarAcentos(categoria?.categoria).replace(/\s+/g, '-')}/${eliminarAcentos(producto?.estado).replace(/\s+/g, '-')}/${producto?.idPublicacion}/${eliminarAcentos(producto?.titulo).replace(/\s+/g, '-')}`} onClick={closeModal}>
+                                                <img src={producto.imagen1} alt="Putas México - Mamis Vip México" />
                                                 <div>
                                                     <h5>{producto.titulo}</h5>
                                                     <span>
-                                                        <FontAwesomeIcon icon={faMapMarkerAlt} /> {producto.estado} -  {producto.municipio}
+                                                        <FontAwesomeIcon icon={faMapMarkerAlt} /> {producto?.estado} -  {producto?.municipio}
                                                     </span>
                                                 </div>
                                             </Link>
                                         </div>
                                     ))}
+                                    {productos?.length > (visibleProducts[categoria?.idCategoria] || 5) && (
+                                        <button onClick={() => handleShowMore(categoria)} className="show-more-btn2">Mostrar más</button>
+                                    )}
                                 </div>
                             ))}
                             {noResults && <p>No se encontraron resultados.</p>}

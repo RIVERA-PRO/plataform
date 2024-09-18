@@ -82,7 +82,7 @@ export default function PublicacionesHome() {
                 });
 
                 // Ordenar aleatoriamente todas las publicaciones seleccionadas y tomar un máximo de 35
-                publicacionesSeleccionadas = publicacionesSeleccionadas.sort(() => Math.random() - 0.5).slice(0, 35);
+                publicacionesSeleccionadas = publicacionesSeleccionadas.sort(() => Math.random() - 0.5).slice(0, 70);
 
                 setPublicacions(publicacionesSeleccionadas);
                 setLoading(false);
@@ -168,7 +168,7 @@ export default function PublicacionesHome() {
                                         {publicaciones?.slice(0, 10)?.filter(item => item.recomendado === "si").map(item => (
                                             <SwiperSlide key={item.idPublicacion} id='SwiperSlide-scroll-products-masvendidos'>
                                                 <Anchor className='cardProdcutmasVendido' to={`/${link}/${removeAccents(categorias.find(cat => cat.idCategoria === item.idCategoria)?.categoria || '').replace(/\s+/g, '-')}/${removeAccents(item?.estado || '').replace(/\s+/g, '-')}/${item.idPublicacion}/${removeAccents(item.titulo || '').replace(/\s+/g, '-')}`}>
-                                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - Mamis Vip México`} />
+                                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - Putas México - Mamis Vip México`} />
                                                     <h6 className='recomendado'>Recomendado</h6>
                                                     <div className='cardText'>
                                                         <h4>{item.titulo}</h4>
@@ -205,7 +205,7 @@ export default function PublicacionesHome() {
                                         {publicaciones?.filter(item => item.idCategoria === idCategoria).map(item => (
                                             <SwiperSlide id='SwiperSlide-scroll-products' key={item.idPublicacion}>
                                                 <Anchor className='cardProdcutSelected' key={item.idPublicacion} to={`/${link}/${removeAccents(categoria || '').replace(/\s+/g, '-')}/${removeAccents(item?.estado || '').replace(/\s+/g, '-')}/${item.idPublicacion}/${removeAccents(item.titulo || '').replace(/\s+/g, '-')}`}>
-                                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - Mamis Vip México`} />
+                                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - Putas México - Mamis Vip México`} />
                                                     <div className='cardTextSelected'>
                                                         <h4>{item.titulo}</h4>
                                                         {isScreenLarge ? (
@@ -230,7 +230,7 @@ export default function PublicacionesHome() {
                             ?.filter(item => categoriaSeleccionada !== 'Todo' && item.idCategoria === categoriaSeleccionada)
                             ?.map(item => (
                                 <Anchor key={item?.idPublicacion} to={`/${link}/${removeAccents(categorias?.find(cat => cat?.idCategoria === categoriaSeleccionada)?.categoria || '').replace(/\s+/g, '-')}/${removeAccents(item?.estado || '').replace(/\s+/g, '-')}/${item.idPublicacion}/${removeAccents(item.titulo || '').replace(/\s+/g, '-')}`} className='cardProdcutSelected'>
-                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - Mamis Vip México`} />
+                                    <img src={obtenerImagen(item)} alt={`${item?.titulo} - Putas México - Mamis Vip México`} />
                                     <div className='cardTextSelected'>
                                         <h4>{item.titulo}</h4>
                                         {isScreenLarge ? (

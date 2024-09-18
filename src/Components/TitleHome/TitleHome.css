@@ -23,6 +23,14 @@
     font-style: italic;
     font-size: 30px;
 }
+.TitleHome h3{
+    color: var(--color1);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 25px;
+}
 .TitleHome p{
     color: var(--text-color2);
 }
@@ -36,7 +44,14 @@
     margin-top: 10px;
 }
 
-
+.spanLoading{
+    width: 30%;
+    height: 1rem;
+    border-radius: 20px;
+     background: linear-gradient(90deg, #e8e6e6, #fff, #fff);
+     background-size: 400% 400%;
+     animation: gradientMove 1s linear infinite;
+}
 @media (max-width: 900px) {
     .TitleHome img{
         width: 50px;
@@ -45,9 +60,15 @@
     .TitleHome h2{
         font-size: 20px;
     }
+    .TitleHome h3{
+        font-size: 17px;
+    }
     .TitleHome{
         padding: 0px 6% 20px;
     }
-   
+    .spanLoading{
+        width: 90%;
+       
+    }
 
 }

@@ -11,6 +11,7 @@ import Publicaciones from "./Publicaciones/Publicaciones";
 import Categorias from "./Categorias/Categorias";
 import PublicacionesFilterPage from "./PublicacionesFilterPage/PublicacionesFilterPage";
 import PagesInfo from "./PagesInfo/PagesInfo";
+import NosotrosPage from "./NosotrosPage/NosotrosPage";
 import link from "../Components/link";
 
 export const router = createBrowserRouter([
@@ -33,6 +34,11 @@ export const router = createBrowserRouter([
             {
                 path: `/${link}/:info`,
                 element: <PagesInfo />,
+            },
+
+            {
+                path: `/nosotros`,
+                element: <NosotrosPage />,
             },
         ]
     },

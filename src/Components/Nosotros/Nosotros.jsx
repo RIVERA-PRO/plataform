@@ -1,12 +1,11 @@
 import React from 'react'
-import './About.css'
+import './Nosotros.css'
 import logo from '../../images/logo.png'
 
-export default function About() {
+export default function Nosotros() {
     return (
         <div className='titleSectionText'>
             <img src={logo} alt='Putas México - Mamis Vip México' />
-
             <h2>
                 Mamis Vip México
             </h2>
@@ -15,9 +14,6 @@ export default function About() {
                 <strong> Putas México - Mamis Vip México</strong> somos una plataforma de hospedaje web para ANUNCIOS CLASIFICADOS PORNO verificados que conecta de forma independiente al Usuario con el Anunciante desde el año 2009 con sede en Victoria, Seychelles para la comunidad mexicana.
             </span>
             <span>Putas México - Escorts México - Escorts Gay México- Trans y Travestis México - Masajes Eróticos México - Gigolos México- Contactos México - Servicios Virtuales México - Sex Shop México - Platinum México</span>
-            <a href={'/mamisvip/nosotros'}>
-                Ver más
-            </a>
 
         </div>
     )

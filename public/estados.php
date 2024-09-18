@@ -1,0 +1,37 @@
+<?php
+$estados = [
+        "Aguascalientes" => ["Aguascalientes", "Jesús María", "Calvillo", "Rincón de Romos", "Pabellón de Arteaga", "Tepezalá", "Asientos", "San Francisco de los Romo", "El Llano"],
+        "Baja California" => ["Tijuana", "Mexicali", "Ensenada", "Playas de Rosarito", "Tecate"],
+        "Baja California Sur" => ["La Paz", "Los Cabos", "Comondú", "Loreto", "Mulegé"],
+        "Campeche" => ["Campeche", "Ciudad del Carmen", "Champotón", "Escárcega", "Calkiní", "Hecelchakán", "Tenabo", "Hopelchén", "Palizada", "Candelaria", "Calakmul"],
+        "Chiapas" => ["Tuxtla Gutiérrez", "San Cristóbal de las Casas", "Tapachula", "Comitán", "Palenque", "Arriaga", "Cintalapa", "Chiapa de Corzo", "Huixtla", "Ocosingo"],
+        "Chihuahua" => ["Chihuahua", "Ciudad Juárez", "Delicias", "Hidalgo del Parral", "Cuauhtémoc", "Camargo", "Jiménez", "Nuevo Casas Grandes", "Guerrero", "Ahumada"],
+        "Ciudad de México" => ["Álvaro Obregón", "Benito Juárez", "Coyoacán", "Cuauhtémoc", "Iztapalapa", "Miguel Hidalgo", "Tlalpan", "Tláhuac", "Venustiano Carranza", "Xochimilco"],
+        "Coahuila" => ["Saltillo", "Torreón", "Monclova", "Piedras Negras", "Ciudad Acuña", "Sabinas", "San Pedro", "Frontera", "Nava", "Ramos Arizpe"],
+        "Colima" => ["Colima", "Manzanillo", "Tecomán", "Villa de Álvarez", "Armería", "Coquimatlán", "Comala", "Ixtlahuacán", "Cuauhtémoc"],
+        "Durango" => ["Durango", "Gómez Palacio", "Lerdo", "Canatlán", "Santiago Papasquiaro", "Nuevo Ideal", "Vicente Guerrero", "Pánuco de Coronado", "Mapimí", "El Salto"],
+        "Guanajuato" => ["León", "Irapuato", "Celaya", "Salamanca", "Guanajuato", "San Miguel de Allende", "Silao", "Acámbaro", "Pénjamo", "San Felipe", "San Luis de la Paz"],
+        "Guerrero" => ["Acapulco", "Chilpancingo", "Iguala", "Zihuatanejo", "Taxco", "Tlapa de Comonfort", "Coyuca de Benítez", "Ometepec", "Atoyac de Álvarez", "Petatlán"],
+        "Hidalgo" => ["Pachuca", "Tulancingo", "Tula", "Ixmiquilpan", "Mineral de la Reforma", "Actopan", "Huejutla de Reyes", "Apan", "Tizayuca", "Zacualtipán"],
+        "Jalisco" => ["Guadalajara", "Zapopan", "Tlaquepaque", "Tlajomulco de Zúñiga", "Puerto Vallarta", "Tonalá", "El Salto", "Tepatitlán de Morelos", "Ocotlán", "Lagos de Moreno"],
+
+        "Estado de México" => ["Ecatepec", "Nezahualcóyotl", "Toluca", "Tlalnepantla", "Naucalpan", "Metepec", "Chalco", "Atizapán de Zaragoza", "Chimalhuacán", "Texcoco"],
+        "Michoacán" => ["Morelia", "Uruapan", "Zamora", "Lázaro Cárdenas", "Apatzingán", "Zitácuaro", "Pátzcuaro", "La Piedad", "Tacámbaro", "Los Reyes"],
+        "Morelos" => ["Cuernavaca", "Jiutepec", "Temixco", "Cuautla", "Yautepec", "Ayala", "Jojutla", "Tepoztlán", "Emiliano Zapata", "Puente de Ixtla"],
+        "Nayarit" => ["Tepic", "Bahía de Banderas", "Xalisco", "Compostela", "Santiago Ixcuintla", "Acaponeta", "Tuxpan", "Tecuala", "Rosamorada", "San Blas"],
+        "Nuevo León" => ["Monterrey", "San Pedro Garza García", "San Nicolás de los Garza", "Guadalupe", "Apodaca", "Santa Catarina", "Escobedo", "Linares", "Carmen", "Cadereyta"],
+        "Oaxaca" => ["Oaxaca de Juárez", "Salina Cruz", "Juchitán", "Tuxtepec", "Puerto Escondido", "Huajuapan de León", "Miahuatlán", "Pochutla", "Tlaxiaco", "Matías Romero"],
+        "Puebla" => ["Puebla", "Tehuacán", "Atlixco", "San Martín Texmelucan", "Cholula", "Izúcar de Matamoros", "Huauchinango", "Teziutlán", "Amozoc", "San Andrés Cholula"],
+        "Querétaro" => ["Querétaro", "San Juan del Río", "El Marqués", "Corregidora", "Tequisquiapan", "Cadereyta", "Colón", "Ezequiel Montes", "Pedro Escobedo", "Peñamiller"],
+        "Quintana Roo" => ["Cancún", "Playa del Carmen", "Chetumal", "Tulum", "Cozumel", "Isla Mujeres", "Felipe Carrillo Puerto", "Bacalar", "José María Morelos", "Puerto Morelos"],
+        "San Luis Potosí" => ["San Luis Potosí", "Soledad de Graciano Sánchez", "Matehuala", "Ciudad Valles", "Rioverde", "Tamazunchale", "Salinas", "Villa de Reyes", "Mexquitic de Carmona", "Charcas"],
+        "Sinaloa" => ["Culiacán", "Mazatlán", "Los Mochis", "Guasave", "Navolato", "El Fuerte", "Salvador Alvarado", "Escuinapa", "Angostura", "Badiraguato"],
+        "Sonora" => ["Hermosillo", "Ciudad Obregón", "Nogales", "Guaymas", "Navojoa", "Caborca", "San Luis Río Colorado", "Agua Prieta", "Cananea", "Huatabampo"],
+        "Tabasco" => ["Villahermosa", "Cárdenas", "Comalcalco", "Macuspana", "Huimanguillo", "Tenosique", "Jalpa de Méndez", "Balancán", "Paraíso", "Emiliano Zapata"],
+        "Tamaulipas" => ["Reynosa", "Matamoros", "Nuevo Laredo", "Ciudad Victoria", "Tampico", "Altamira", "Madero", "Miguel Alemán", "Valle Hermoso", "Río Bravo"],
+        "Tlaxcala" => ["Tlaxcala", "Apizaco", "Huamantla", "Chiautempan", "San Pablo del Monte", "Zacatelco", "Calpulalpan", "Contla", "Santa Cruz Tlaxcala", "Xicohtzinco"],
+        "Veracruz" => ["Veracruz", "Xalapa", "Coatzacoalcos", "Poza Rica", "Córdoba", "Orizaba", "Minatitlán", "Boca del Río", "Martínez de la Torre", "Tuxpan"],
+        "Yucatán" => ["Mérida", "Valladolid", "Progreso", "Tizimín", "Umán", "Kanasín", "Ticul", "Motul", "Izamal", "Hunucmá"],
+        "Zacatecas" => ["Zacatecas", "Fresnillo", "Guadalupe", "Jerez", "Río Grande", "Sombrerete", "Tlaltenango", "Ojocaliente", "Valparaíso", "Loreto"]
+];
+?>

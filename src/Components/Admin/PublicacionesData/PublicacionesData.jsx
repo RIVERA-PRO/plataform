@@ -53,6 +53,10 @@ export default function PublicacionesData() {
     const [municipios, setMunicipios] = useState([]);
     const [estadoSeleccionado, setEstadoSeleccionado] = useState('');
     const [municipioSeleccionado, setMunicipioSeleccionado] = useState('');
+    const [visibleCount, setVisibleCount] = useState(20);
+    const handleShowMore = () => {
+        setVisibleCount(prevCount => prevCount + 20);
+    };
     const handlePalabraClaveClick = (palabra) => {
         setNuevaDescripcion(prevDescripcion => `${prevDescripcion}\n${palabra}`);
     };
@@ -367,6 +371,9 @@ export default function PublicacionesData() {
                 </div>
                 <div className='filtrosContain'>
                     <div className='inputsColumn'>
+                        <button className='s' onClick={recargar}>{String(Filtrados?.length)?.replace(/\B(?=(\d{3})+(?!\d))/g, ".")} / {String(publicaciones?.length)?.replace(/\B(?=(\d{3})+(?!\d))/g, ".")} </button>
+                    </div>
+                    <div className='inputsColumn'>
                         <input type="number" value={filtroId} onChange={(e) => setFiltroId(e.target.value)} placeholder='Id' />
                     </div>
 
@@ -677,7 +684,7 @@ export default function PublicacionesData() {
                     </thead>
                     <tbody>
 
-                        {Filtrados.map(item => (
+                        {Filtrados?.slice(0, visibleCount)?.map(item => (
                             <tr key={item.idPublicacion}>
                                 <td>{item.idPublicacion}</td>
 
@@ -726,6 +733,11 @@ export default function PublicacionesData() {
 
                 </table>
             </div>
+
+            {Filtrados?.length > visibleCount && (
+                <button onClick={handleShowMore} className="show-more-btn">
+                    Mostrar  más </button>
+            )}
         </div>
     );
 };

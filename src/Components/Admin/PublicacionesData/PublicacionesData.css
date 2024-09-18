@@ -278,6 +278,13 @@ button{
     border: 1px solid #949191;
     width: 20vh;
 }
+.inputsColumn button{
+    border-radius: 7px;
+    padding: 10px 13px;
+    border: 1px solid #949191;
+    width: 20vh;
+    background-color: transparent;
+}
 .excel{
         background-color: green;
         color: var(--blanco);

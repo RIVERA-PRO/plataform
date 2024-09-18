@@ -9,7 +9,7 @@ export default function PoliticaDeCokies() {
         <div className="InfoContain">
             <div className="sectionInfo">
                 <h1> {info?.replace(/-/g, ' ')}</h1>
-                <p>Al usar esta APLICACIÓN WEB <strong>Mamis Vip México</strong> implementamos el uso de Cookies para mejorar la experiencia del usuario y el anunciante.</p>
+                <p>Al usar esta APLICACIÓN WEB <strong>Putas México - Mamis Vip México</strong> implementamos el uso de Cookies para mejorar la experiencia del usuario y el anunciante.</p>
                 <ol>
                     <li>Definición y función de las cookies</li>
                     <li>Tipo de cookies que utiliza la aplicación web y su finalidad</li>

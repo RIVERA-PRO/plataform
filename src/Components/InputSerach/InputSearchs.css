@@ -17,6 +17,12 @@
   align-items: center;
   place-content: center;
 }
+.show-more-btn2{
+  color: var(--color1);
+  text-align: center;
+  justify-content: center;
+  padding: 0px 10px 2rem;
+}
 .modalInput{
   background-color: var(--blanco);
   width: 30rem!important;

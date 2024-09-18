@@ -24,7 +24,14 @@
     font-style: italic;
     font-size: 30px;
 }
-
+.titleSectionText h3{
+    color: var(--color1);
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    font-size: 25px;
+}
 .titleSectionText span{
     color: var(--text-color2);
     font-weight: 400;
@@ -47,6 +54,9 @@
     }
     .titleSectionText h2{
         font-size: 20px;
+    }
+    .titleSectionText h3{
+        font-size: 17px;
     }
     .titleSectionText{
         padding: 30px 6%;

@@ -8,7 +8,8 @@ import Profile from '../Profile/Profile';
 import './Navbar.css';
 import Favoritos from '../Favoritos/Favoritos';
 import InputSerach from '../InputSerach/InputSearchs';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
 
@@ -16,13 +17,16 @@ export default function Navbar() {
         <header>
             <nav>
                 <Anchor to={`/`} className='logo'>
-                    {/* <img src={logo} alt={alt} /> */}
+
                     <h1>Mamis Vip</h1>
                 </Anchor>
                 <div className='deFLexNavs'>
                     <InputSerach />
 
-
+                    <Anchor to={`/nosotros`} className='FavoriteIcon'>
+                        <FontAwesomeIcon icon={faUser} />
+                        <span>Nosotros</span>
+                    </Anchor>
                     <Favoritos />
                     <div className={`nav_toggle ${isOpen && "open"}`} onClick={() => setIsOpen(!isOpen)}>
                         <span></span>
