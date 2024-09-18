@@ -29,6 +29,8 @@ export default function Footer() {
                     <p>
                         <strong>
                             Putas México - Mamis Vip México</strong> somos una plataforma de hospedaje web para ANUNCIOS CLASIFICADOS PORNO verificados que conecta de forma independiente al Usuario con el Anunciante desde el año 2009 con sede en Victoria, Seychelles para la comunidad mexicana.
+                        Encuentra trabajadoras sexuales y servicios de acompañantes en México disponibles las 24 horas.
+
                     </p>
 
                 </div>
